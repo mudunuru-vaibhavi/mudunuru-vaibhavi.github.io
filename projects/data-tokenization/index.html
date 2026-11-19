@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Data Tokenization · Vaibhavi Mudunuru</title>
+<meta name="description" content="Case study: geocoding 700,000 synthetic patients with tokenization, a key vault, least-privilege service accounts and a leak scan.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%232346c8'/%3E%3Ctext x='16' y='21.5' font-family='Arial' font-weight='700' font-size='14' fill='white' text-anchor='middle'%3EVM%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="../../assets/style.css">
+</head>
+<body>
+<nav class="nav" aria-label="Main">
+  <div class="wrap">
+    <a class="brand" href="../../"><span class="mark">VM</span>Vaibhavi Mudunuru</a>
+    <ul><li><a href="../../#projects">Projects</a></li><li><a href="../../#side">Side projects</a></li><li><a href="../../#contact">Contact</a></li></ul>
+    <button class="theme-btn" id="theme" type="button" aria-label="Switch light or dark theme">◐ Theme</button>
+  </div>
+</nav>
+
+<main class="wrap">
+  <header class="cs-hero read">
+    <a class="back" href="../../#side">← All projects</a>
+    <p class="eyebrow" style="margin-top:22px">Side project · PHI security</p>
+    <h1>Data Tokenization</h1>
+    <p class="lede">Geocoding 700,000 patients without plaintext PHI ever leaving the vault boundary: tokenize at the edge, detokenize only inside a least-privilege service, call the vendor with the minimum necessary, retokenize, and prove nothing leaked.</p>
+    <div class="btns">
+      <a class="btn primary" href="https://mudunuru-vaibhavi.github.io/data-tokenization/" target="_blank" rel="noopener">Open the live dashboard ↗</a>
+      <a class="btn" href="https://github.com/mudunuru-vaibhavi/data-tokenization" target="_blank" rel="noopener">Read the code ↗</a>
+    </div>
+  </header>
+
+  <figure class="cs-figure">
+    <img src="../../assets/img/tok-overview.png" alt="Overview: three trust zones (secure zone, analytics lake, external vendor) and one synthetic patient traced through each" width="1280" height="1300">
+    <figcaption>Three trust zones, and one synthetic patient traced through each. Source values are synthetic and masked.</figcaption>
+  </figure>
+
+  <div class="cs-numbers">
+    <div><b>700,000</b><span>synthetic patients in 76 seconds</span></div>
+    <div><b>411,820</b><span>unique addresses; 288,180 vendor calls saved</span></div>
+    <div><b>98.9%</b><span>matched to the street; the rest at ZIP centroid</span></div>
+    <div><b>0</b><span>identifiers found in the lake or the vendor's log</span></div>
+  </div>
+
+  <article class="cs read">
+    <h2>The problem</h2>
+    <p>Mapping patients needs their addresses geocoded: turned into coordinates, counties and map cells. The best geocoders are outside vendors, and an address is protected health information. Sending a whole patient table out is not acceptable; not geocoding at all leaves access-to-care and outreach questions unanswered. The job is to get the coordinates while the vendor sees only what it must, and nothing in the data lake can identify anyone.</p>
+
+    <h2>How it works</h2>
+    <ol class="steps">
+      <li><span><b>Tokenize at the edge.</b> Every identifier (MRN, name, birth date, SSN, phone, street, city, ZIP) becomes a keyed HMAC token. The same value always gives the same token, so the lake still joins and counts.</span></li>
+      <li><span><b>Keep it reversible, but locked.</b> Each distinct value is stored once as AES-256-GCM ciphertext in a token vault, under a key that lives only in the key vault.</span></li>
+      <li><span><b>De-duplicate.</b> Households share an address, so 700,000 patients become 411,820 unique addresses before anything is sent.</span></li>
+      <li><span><b>Detokenize inside, for one batch.</b> The geocoding service account turns street, city and ZIP back into text in memory, 1,000 addresses at a time, and nothing else.</span></li>
+      <li><span><b>Call the vendor with the minimum necessary.</b> Street, city, state, ZIP, authenticated with an API key read from the key vault; transient errors retried with backoff.</span></li>
+      <li><span><b>Retokenize and generalize.</b> Precise coordinates become a token on arrival; the lake keeps county, ZIP3 and a 5 km grid cell, and the map hides cells under 11 patients.</span></li>
+    </ol>
+
+    <h2>Key vault and service accounts</h2>
+    <div class="tbl"><table>
+      <thead><tr><th>Service account</th><th>Azure built-in role</th><th>Key vault</th><th>May detokenize</th></tr></thead>
+      <tbody>
+        <tr><td><b>svc-tokenizer</b></td><td>Key Vault Secrets Officer</td><td>get, list, set (read and write)</td><td>nothing</td></tr>
+        <tr><td><b>svc-geocoder</b></td><td>Key Vault Secrets User</td><td>get (read only)</td><td>street, city, ZIP</td></tr>
+        <tr><td><b>analyst</b></td><td>none</td><td>none</td><td>nothing</td></tr>
+      </tbody>
+    </table></div>
+    <p>Three secrets live in the vault: the tokenization key, the data-encryption key (versioned and rotated every run) and the vendor's API key. Every run tries each sensitive operation as each account; the four outside policy (the geocoder writing a secret or detokenizing SSNs, the analyst reading a key or detokenizing) are denied and land in the audit log.</p>
+
+    <figure class="cs-figure">
+      <img src="../../assets/img/tok-vault.png" alt="Key vault and access: service accounts, every attempted operation with allowed or denied, key vault audit and detokenization audit" width="1280" height="1300" loading="lazy">
+      <figcaption>Roles, every attempted operation, and both audit logs.</figcaption>
+    </figure>
+
+    <h2>How I proved nothing leaked</h2>
+    <div class="callout"><b>The lake.</b> Every value in every file checked against all 700,000 real (synthetic) MRNs, SSNs, phones, birth dates, full names and street addresses, plus SSN, phone and MRN patterns. Zero found.</div>
+    <div class="callout"><b>The vendor.</b> The vendor's own request log, all 415,820 rows it received including retried batches: five columns per row (id, street, city, state, ZIP) and zero names, MRNs, SSNs, phones or birth dates.</div>
+    <div class="callout"><b>Key rotation.</b> A new data-encryption key re-wrapped 2,300,261 stored values. Not one token in the lake changed, and detokenizing still works.</div>
+
+    <h2>Design decisions</h2>
+    <ul>
+      <li><b>Keyed hashes, not plain hashes.</b> There are only so many birth dates and ZIP codes; a plain hash of one can be guessed. HMAC needs the key.</li>
+      <li><b>Field-scoped tokens.</b> The field name is part of the input, so a street token can't be passed off as a ZIP token to get it detokenized.</li>
+      <li><b>Two keys.</b> One makes tokens, one makes them reversible, so the encryption key can rotate without touching the lake.</li>
+      <li><b>Pluggable services.</b> The same code runs against Azure Key Vault (managed identity, built-in RBAC roles) and the US Census Geocoder with one setting each.</li>
+    </ul>
+
+    <h2>Limits I'd state up front</h2>
+    <ul>
+      <li>The local key vault is a development stand-in; production keys belong in a managed vault or HSM.</li>
+      <li>ZIP3 is Safe Harbor-compliant only where the area has more than 20,000 people; a production version would roll small areas up.</li>
+      <li>Detokenized batches live in process memory; a hardened version would run the job in an isolated worker.</li>
+    </ul>
+    <p class="muted">Tech: Python · pandas · DuckDB · cryptography (AES-256-GCM, HMAC-SHA256) · Azure Key Vault SDK · REST batch API · Plotly · pytest</p>
+
+    <div class="next-proj"><span><span class="muted">Back to</span><br><b>All projects</b></span><a class="btn small" href="../../#projects">See the main projects →</a></div>
+  </article>
+</main>
+
+<footer class="site" style="margin-top:80px"><div class="wrap"><span>© 2026 Vaibhavi Mudunuru</span><span>All patients are synthetic.</span></div></footer>
+<script>
+(() => { const r = document.documentElement;
+  try { const t = localStorage.getItem("vm-theme"); if (t) r.dataset.theme = t; } catch (e) {}
+  document.getElementById("theme").addEventListener("click", () => {
+    const d = r.dataset.theme ? r.dataset.theme === "dark" : matchMedia("(prefers-color-scheme: dark)").matches;
+    r.dataset.theme = d ? "light" : "dark"; try { localStorage.setItem("vm-theme", r.dataset.theme); } catch (e) {} });
+})();
+</script>
+</body>
+</html>

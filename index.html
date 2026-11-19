@@ -21,6 +21,7 @@
     <a class="brand" href="#top"><span class="mark">VM</span>Vaibhavi Mudunuru</a>
     <ul>
       <li><a href="#projects">Projects</a></li>
+      <li><a href="#side">Side projects</a></li>
       <li><a href="#practice">How I work</a></li>
       <li><a href="#experience">Experience</a></li>
       <li><a href="#skills">Skills</a></li>
@@ -190,7 +191,53 @@
   </div>
 </section>
 
-<section class="band alt" id="practice">
+<section class="band alt" id="side">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Side projects</span>
+      <h2>Smaller builds that go deep on one hard problem.</h2>
+    </div>
+    <article class="project">
+      <div class="project-text">
+        <div class="project-num">S1 <span class="tag">PHI security</span></div>
+        <h3>Data Tokenization</h3>
+        <p class="summary">Geocoding 700,000 patients without plaintext PHI leaving the vault boundary. Identifiers become tokens at the edge; a service account detokenizes only street, city and ZIP, in memory, for the batch it sends; the vendor's coordinates are retokenized on arrival.</p>
+        <ul class="facts">
+          <li>Deterministic HMAC tokens keep joins working; an AES-256-GCM token vault makes them reversible</li>
+          <li>Keys in a key vault with Azure-style roles: the tokenizer can read and write, the geocoder can only read</li>
+          <li>Field-level policy: the geocoder may detokenize addresses, never SSNs; every attempt is audited</li>
+          <li>Leak scan of the lake and the vendor's own request log: zero identifiers found</li>
+        </ul>
+        <div class="metrics">
+          <div><b>700K</b><span>patients in 76 seconds</span></div>
+          <div><b>288K</b><span>vendor calls saved by de-duplicating households</span></div>
+          <div><b>0</b><span>identifiers found at rest or at the vendor</span></div>
+        </div>
+        <div class="chips"><span class="chip">Python</span><span class="chip">AES-256-GCM</span><span class="chip">HMAC</span><span class="chip">Azure Key Vault</span><span class="chip">DuckDB</span><span class="chip">REST batch API</span></div>
+        <div class="btns">
+          <a class="btn primary small" href="https://mudunuru-vaibhavi.github.io/data-tokenization/" target="_blank" rel="noopener">Live dashboard ↗</a>
+          <a class="btn small" href="https://github.com/mudunuru-vaibhavi/data-tokenization" target="_blank" rel="noopener">Code ↗</a>
+          <a class="btn small" href="projects/data-tokenization/">Case study →</a>
+        </div>
+      </div>
+      <div class="shot" data-gallery="tok">
+        <figure>
+          <div class="chrome"><i></i><i></i><i></i><span>data-tokenization · dashboard</span></div>
+          <img src="assets/img/tok-overview.png" alt="Overview: three trust zones and one synthetic patient traced through each" width="1280" height="1300" loading="lazy">
+          <figcaption>Three trust zones, and one synthetic patient traced through each of them.</figcaption>
+        </figure>
+        <div class="shot-tabs" role="group" aria-label="Dashboard views">
+          <button type="button" aria-pressed="true" data-src="assets/img/tok-overview.png" data-alt="Overview of the three trust zones" data-cap="Three trust zones, and one synthetic patient traced through each of them.">Overview</button>
+          <button type="button" aria-pressed="false" data-src="assets/img/tok-vault.png" data-alt="Service accounts, access attempts and audit logs" data-cap="Service-account roles, every forbidden attempt denied, and both audit logs.">Key vault</button>
+          <button type="button" aria-pressed="false" data-src="assets/img/tok-vendor.png" data-alt="What the vendor received: address columns only, zero identifiers" data-cap="The vendor's own request log: five columns per row and zero identifiers.">Vendor</button>
+          <button type="button" aria-pressed="false" data-src="assets/img/tok-map.png" data-alt="Patients per 5 km grid cell in one city, small cells suppressed" data-cap="Generalized geography: patients per 5 km cell, with small cells suppressed.">Map</button>
+        </div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section class="band" id="practice">
   <div class="wrap">
     <div class="section-head">
       <span class="eyebrow">How I work</span>
@@ -205,7 +252,7 @@
   </div>
 </section>
 
-<section class="band" id="experience">
+<section class="band alt" id="experience">
   <div class="wrap">
     <div class="section-head">
       <span class="eyebrow">Experience · Aug 2020 – present</span>
@@ -254,7 +301,7 @@
   </div>
 </section>
 
-<section class="band alt" id="skills">
+<section class="band" id="skills">
   <div class="wrap">
     <div class="section-head">
       <span class="eyebrow">Skills</span>
@@ -270,7 +317,7 @@
   </div>
 </section>
 
-<section class="band" id="contact">
+<section class="band alt" id="contact">
   <div class="wrap contact">
     <div>
       <span class="eyebrow">Contact</span>
