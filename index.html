@@ -366,10 +366,10 @@
     </div>
     <div style="display:grid;gap:16px">
       <p class="lede" style="font-size:17px">Open to software engineering, data engineering, data analyst and BI developer roles in healthcare. Email is the fastest way to reach me.</p>
-      <span class="addr">l.vaibhavimudunuru@gmail.com</span>
+      <span class="addr">mudunuru.vaibhavi@gmail.com</span>
       <div class="btns">
         <button class="btn primary" type="button" id="copy-email">Copy email</button>
-        <a class="btn" href="mailto:l.vaibhavimudunuru@gmail.com">Email me</a>
+        <a class="btn" href="mailto:mudunuru.vaibhavi@gmail.com">Email me</a>
         <a class="btn" href="https://github.com/mudunuru-vaibhavi" target="_blank" rel="noopener">GitHub ↗</a>
       </div>
     </div>
@@ -432,7 +432,7 @@
   // ---- copy email
   const copy = document.getElementById("copy-email");
   copy.addEventListener("click", async () => {
-    try { await navigator.clipboard.writeText("l.vaibhavimudunuru@gmail.com"); copy.textContent = "Copied"; }
+    try { await navigator.clipboard.writeText("mudunuru.vaibhavi@gmail.com"); copy.textContent = "Copied"; }
     catch (e) { const r = document.createRange(); r.selectNodeContents(document.querySelector(".addr")); getSelection().removeAllRanges(); getSelection().addRange(r); copy.textContent = "Selected: press ⌘C"; }
     setTimeout(() => (copy.textContent = "Copy email"), 2200);
   });
