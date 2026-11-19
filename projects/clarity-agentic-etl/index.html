@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Self-healing Clarity ETL · Vaibhavi Mudunuru</title>
+<meta name="description" content="Case study: a nightly Epic Clarity pipeline with file and data checks, an investigation agent that heals safe failures, and a four-audience dashboard.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%232346c8'/%3E%3Ctext x='16' y='21.5' font-family='Arial' font-weight='700' font-size='14' fill='white' text-anchor='middle'%3EVM%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="../../assets/style.css">
+</head>
+<body>
+<nav class="nav" aria-label="Main">
+  <div class="wrap">
+    <a class="brand" href="../../"><span class="mark">VM</span>Vaibhavi Mudunuru</a>
+    <ul><li><a href="../../#projects">Projects</a></li><li><a href="../../#experience">Experience</a></li><li><a href="../../#contact">Contact</a></li></ul>
+    <button class="theme-btn" id="theme" type="button" aria-label="Switch light or dark theme">◐ Theme</button>
+  </div>
+</nav>
+
+<main class="wrap">
+  <header class="cs-hero read">
+    <a class="back" href="../../#projects">← All projects</a>
+    <p class="eyebrow" style="margin-top:22px">Project 01 · Data engineering</p>
+    <h1>Self-healing Epic Clarity ETL</h1>
+    <p class="lede">A nightly pipeline from Epic Clarity to a SQL warehouse that checks everything before it loads, sends an agent to investigate failures, and ends in one dashboard for executives, finance, data and IT.</p>
+    <div class="btns">
+      <a class="btn primary" href="https://mudunuru-vaibhavi.github.io/clarity-agentic-etl/" target="_blank" rel="noopener">Open the live dashboard ↗</a>
+      <a class="btn" href="https://github.com/mudunuru-vaibhavi/clarity-agentic-etl" target="_blank" rel="noopener">Read the code ↗</a>
+    </div>
+  </header>
+
+  <figure class="cs-figure">
+    <img src="../../assets/img/clarity-executive.png" alt="Executive view of the dashboard: visits, no-show rate, ED visits and a daily visits chart" width="1440" height="900">
+    <figcaption>Executive view: visits, no-shows, ED volume and department load against the prior period.</figcaption>
+  </figure>
+
+  <div class="cs-numbers">
+    <div><b>140</b><span>nights of Clarity extracts loaded</span></div>
+    <div><b>~220K</b><span>rows across 16 Clarity tables</span></div>
+    <div><b>~80</b><span>data-quality checks every night</span></div>
+    <div><b>1 of 2</b><span>failures healed with no human needed</span></div>
+    <div><b>23</b><span>tests, plus a SQL Server run in CI</span></div>
+  </div>
+
+  <article class="cs read">
+    <h2>The problem</h2>
+    <p>Hospitals report from Epic's Clarity database, which a data team copies every night into its own warehouse. When that copy breaks, someone has to find out why at 2 AM: a file cut short in transfer, a column Epic added after an upgrade, rows pointing at visits that were never sent. Until it is fixed, every report downstream is a day stale, and loading bad data is worse than loading none.</p>
+    <p>This project rebuilds that whole path as a working proof of concept, then adds an agent that does the first hour of on-call investigation.</p>
+
+    <h2>How it works</h2>
+    <ol class="steps">
+      <li><span><b>Source: Clarity extracts.</b> A day-by-day simulation of a fictional health system writes pipe-delimited files and a checksum manifest every night.</span></li>
+      <li><span><b>Transfer: SFTP landing.</b> New drops are pulled only once their manifest exists, into a temporary folder renamed into place.</span></li>
+      <li><span><b>Check, then load.</b> Checksum, row count, schema and types first; then duplicate keys, required fields, foreign keys and balance reconciliation in SQL.</span></li>
+      <li><span><b>Investigate failures.</b> The agent reads the audit log, inspects files and queries the warehouse read-only. It may only re-pull and retry; anything else needs a person.</span></li>
+      <li><span><b>Report.</b> Reporting marts rebuild after each run and feed one dashboard with four audiences.</span></li>
+    </ol>
+    <p>Each night loads in one transaction: all of it, or none of it. A failed night holds every later night, because an incremental extract can't be applied before the one it builds on. Every run, file, check and incident is logged, and those audit tables power the IT and data-quality views.</p>
+
+    <h2>Two nights the agent handled</h2>
+    <div class="callout"><b>Nov 11 · resolved in 4 minutes · no human needed.</b> A transactions file was cut short on its way over SFTP. The landed file failed its checksum. The agent compared it with the source, found the source copy intact, re-pulled the drop and retried. The night loaded, and the incident closed itself.</div>
+    <div class="callout"><b>Nov 14 · held for approval.</b> Epic added a <code>PAT_EMAIL</code> column to the patient extract. The agent matched the new header against the agreed contract, profiled the new column without copying any values into its report, and flagged it as likely PHI under HIPAA's minimum-necessary rule. It held all later nights and asked a person to decide. When a clean file was re-sent, the pipeline caught up on its own.</div>
+
+    <h2>Design decisions</h2>
+    <ul>
+      <li><b>A contract, not a guess.</b> A schema registry lists every expected column, type, key and foreign key, so an upstream change becomes a reviewed decision instead of a silent break.</li>
+      <li><b>Two safe actions only.</b> Re-pull and retry can't damage data. Everything else is written up as an incident with the exact change proposed.</li>
+      <li><b>Tested on the real thing.</b> CI pushes three weeks of drops to a real SFTP container, loads them into SQL Server 2022, breaks one night, and checks that it heals.</li>
+    </ul>
+
+    <h2>What the dashboard answers</h2>
+    <div class="tbl"><table>
+      <thead><tr><th>Audience</th><th>Questions</th></tr></thead>
+      <tbody>
+        <tr><td><b>Executive</b></td><td>Are visit volumes holding up? Which departments carry the load? Where do patients miss appointments?</td></tr>
+        <tr><td><b>Finance</b></td><td>How old is A/R and who owes it? Which payers deny most and pay slowest? Days in A/R, DNFB, first-pass denial rate.</td></tr>
+        <tr><td><b>Data</b></td><td>When did checks warn or block a load? Is each table fresh? Are blank values creeping up?</td></tr>
+        <tr><td><b>IT</b></td><td>Did every nightly run land? What broke, what did the agent do, and was a person needed?</td></tr>
+      </tbody>
+    </table></div>
+
+    <h2>What I'd add next</h2>
+    <ul>
+      <li>Incremental marts instead of full rebuilds.</li>
+      <li>Alerting to email or Teams, with secrets in a vault.</li>
+      <li>Role-based access to the dashboard.</li>
+    </ul>
+    <p class="muted">Tech: Python · SQL · SQLAlchemy · pandas · Paramiko (SFTP) · SQL Server · SQLite · Streamlit · Plotly · pytest · Docker · GitHub Actions</p>
+
+    <div class="next-proj"><span><span class="muted">Next project</span><br><b>HEDIS gap-closure outreach</b></span><a class="btn small" href="../hedis-outreach-rag/">Read the case study →</a></div>
+  </article>
+</main>
+
+<footer class="site" style="margin-top:80px"><div class="wrap"><span>© 2026 Vaibhavi Mudunuru</span><span>Project data is synthetic.</span></div></footer>
+<script>
+(() => { const r = document.documentElement;
+  try { const t = localStorage.getItem("vm-theme"); if (t) r.dataset.theme = t; } catch (e) {}
+  document.getElementById("theme").addEventListener("click", () => {
+    const d = r.dataset.theme ? r.dataset.theme === "dark" : matchMedia("(prefers-color-scheme: dark)").matches;
+    r.dataset.theme = d ? "light" : "dark"; try { localStorage.setItem("vm-theme", r.dataset.theme); } catch (e) {} });
+})();
+</script>
+</body>
+</html>

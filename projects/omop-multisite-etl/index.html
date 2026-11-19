@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>OMOP Multi-site ETL · Vaibhavi Mudunuru</title>
+<meta name="description" content="Case study: Epic Clarity and FHIR R4 mapped into one OMOP CDM with PySpark, tested with OHDSI-style checks, and used for a validated real-world-evidence study.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%232346c8'/%3E%3Ctext x='16' y='21.5' font-family='Arial' font-weight='700' font-size='14' fill='white' text-anchor='middle'%3EVM%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="../../assets/style.css">
+</head>
+<body>
+<nav class="nav" aria-label="Main">
+  <div class="wrap">
+    <a class="brand" href="../../"><span class="mark">VM</span>Vaibhavi Mudunuru</a>
+    <ul><li><a href="../../#projects">Projects</a></li><li><a href="../../#experience">Experience</a></li><li><a href="../../#contact">Contact</a></li></ul>
+    <button class="theme-btn" id="theme" type="button" aria-label="Switch light or dark theme">◐ Theme</button>
+  </div>
+</nav>
+
+<main class="wrap">
+  <header class="cs-hero read">
+    <a class="back" href="../../#projects">← All projects</a>
+    <p class="eyebrow" style="margin-top:22px">Project 03 · Clinical informatics · RWE</p>
+    <h1>One OMOP warehouse from two very different EHR exports</h1>
+    <p class="lede">An Epic Clarity extract and a FHIR R4 bulk export, mapped with PySpark into one OMOP CDM v5.4 warehouse, tested with 163 OHDSI-style checks, and used for a new-user cohort study whose right answer was known in advance.</p>
+    <div class="btns">
+      <a class="btn primary" href="https://mudunuru-vaibhavi.github.io/omop-multisite-etl/" target="_blank" rel="noopener">Open the live dashboard ↗</a>
+      <a class="btn" href="https://github.com/mudunuru-vaibhavi/omop-multisite-etl" target="_blank" rel="noopener">Read the code ↗</a>
+    </div>
+  </header>
+
+  <figure class="cs-figure">
+    <img src="../../assets/img/omop-study.png" alt="Study view: Kaplan-Meier cumulative incidence, hazard ratio forest plot against the true value, covariate balance and external calibration" width="1280" height="1400">
+    <figcaption>The study view: cumulative incidence by drug, hazard ratios against the planted true value, balance before and after weighting, and external calibration.</figcaption>
+  </figure>
+
+  <div class="cs-numbers">
+    <div><b>10,999</b><span>patients from 2 sites, 45 s end to end</span></div>
+    <div><b>100%</b><span>of 886,847 source records mapped to standard concepts</span></div>
+    <div><b>157/157</b><span>applicable checks pass; 11 flags = every planted defect</span></div>
+    <div><b>2.28</b><span>adjusted hazard ratio vs an oracle of 2.19 (true 2.0)</span></div>
+  </div>
+
+  <article class="cs read">
+    <h2>The problem</h2>
+    <p>Every EHR stores data differently, so a study written for one hospital can't run at another. The OMOP Common Data Model fixes that: every site converts its data into the same tables and the same standard codes. The hard part is the conversion itself, especially when the sources are as different as an Epic Clarity extract and a FHIR export, and proving afterwards that the converted data still tells the truth.</p>
+
+    <h2>How it works</h2>
+    <ol class="steps">
+      <li><span><b>Two fictional health systems.</b> One simulator writes Cedar Valley as 23 Clarity tables and Riverside as FHIR R4 NDJSON, each with a checksum manifest. Real-world quirks are planted: weight in ounces, "128/82" blood-pressure strings, <code>9999999</code> lab values, a retired ICD code, IFCC HbA1c units, duplicate resources.</span></li>
+      <li><span><b>Spark staging.</b> Each format is reshaped into the same five staging tables, so a third site means one new function and nothing else.</span></li>
+      <li><span><b>Map to OMOP.</b> Units are harmonised, codes follow <code>Maps to</code> (one-to-many included), rows are routed by the standard concept's domain, and ids are deterministic hashes, so re-runs are stable and sites never collide.</span></li>
+      <li><span><b>Warehouse and quality.</b> DuckDB holds the CDM, vocabulary and drug and condition eras. 163 checks follow the Kahn framework; duplicate keys or orphan rows stop the run before any analysis.</span></li>
+      <li><span><b>Local codes, reviewed.</b> Codes no public vocabulary knows get candidate concepts by retrieval, automatic validation, and a human decision in <code>SOURCE_TO_CONCEPT_MAP</code>.</span></li>
+      <li><span><b>The study.</b> Glipizide vs metformin and hypoglycemia: a new-user, active-comparator cohort in SQL, then Kaplan–Meier, Cox and IPTW, per-site estimates, and a risk model trained at one site and validated at the other.</span></li>
+      <li><span><b>Orchestrate and publish.</b> One task list drives the CLI and an Airflow 3 DAG; files can land in S3; CI runs the tests, an Airflow run and GitHub Pages.</span></li>
+    </ol>
+
+    <h2>The same diagnosis in three shapes</h2>
+    <div class="tbl"><table>
+      <thead><tr><th>Cedar Valley (Clarity)</th><th>Riverside (FHIR)</th><th>OMOP</th></tr></thead>
+      <tbody>
+        <tr><td><code>E11.649</code> T2DM with hypoglycemia</td><td>SNOMED <code>302866003</code> hypoglycemia</td><td>Two condition rows: T2DM <b>and</b> hypoglycemia</td></tr>
+        <tr><td>Weight row: 2,857.2 ounces</td><td>178.6 <code>[lb_av]</code></td><td>81.0 kg from both</td></tr>
+        <tr><td><code>ORD_NUM_VALUE</code> 9999999, text "&gt;14.0"</td><td>HbA1c 62 mmol/mol (IFCC)</td><td>&gt; 14.0 % with an operator · 7.8 %</td></tr>
+      </tbody>
+    </table></div>
+
+    <h2>What testing caught</h2>
+    <div class="callout"><b>A suspicious first estimate.</b> The first hazard ratio was 2.9 against a planted 2.0. Fitting the same model to the simulator's ground truth gave 2.7, so the ETL wasn't the cause; eight larger simulations averaged 1.97, so it was sampling noise. Every run now includes that "oracle" comparison: 2.28 from the pipeline, 2.19 from the truth, and 100% agreement per patient on treatment and outcome.</div>
+    <div class="callout"><b>A mapping that passed every automatic check and was still wrong.</b> A local eGFR code was matched to the 2009 CKD-EPI equation; the source was the 2021 race-free equation, which has its own LOINC code. Domain and unit checks can't see that, which is why a person reviews every mapping. Four of six suggestions were corrected.</div>
+    <div class="callout"><b>Better mapping changed the statistics.</b> Once point-of-care HbA1c was mapped, every patient had a baseline value, the "missing HbA1c" covariate became constant, and the model failed. Constant covariates are now dropped automatically.</div>
+    <div class="callout"><b>A bug only orchestration showed.</b> Under Airflow, Spark's workers started a different Python than the driver. Pinning the interpreter fixed it; all 12 tasks now succeed.</div>
+
+    <figure class="cs-figure" style="margin-top:28px">
+      <img src="../../assets/img/omop-mapping.png" alt="Vocabulary mapping: coverage by site and kind, and the reviewed local-code decisions" width="1280" height="1400" loading="lazy">
+      <figcaption>Mapping coverage by site, and every local-code decision with its automated checks and the reviewer's note.</figcaption>
+    </figure>
+
+    <h2>Limits I'd state up front</h2>
+    <ul>
+      <li>Synthetic data from a simple model; real feeds are messier (merged patients, time zones, late data).</li>
+      <li>A small demo vocabulary in Athena's format with local concept ids; the code looks concepts up by code, so real vocabularies are a configuration change.</li>
+      <li>Quality checks are modeled on OHDSI's Data Quality Dashboard; in production I'd also run the official tool against Postgres.</li>
+    </ul>
+    <p class="muted">Tech: PySpark · DuckDB · OMOP CDM v5.4 · FHIR R4 · Airflow 3 · boto3 (S3) · lifelines · scikit-learn · pytest · GitHub Actions</p>
+
+    <div class="next-proj"><span><span class="muted">Back to</span><br><b>All projects</b></span><a class="btn small" href="../../#projects">See all three →</a></div>
+  </article>
+</main>
+
+<footer class="site" style="margin-top:80px"><div class="wrap"><span>© 2026 Vaibhavi Mudunuru</span><span>Project data is synthetic.</span></div></footer>
+<script>
+(() => { const r = document.documentElement;
+  try { const t = localStorage.getItem("vm-theme"); if (t) r.dataset.theme = t; } catch (e) {}
+  document.getElementById("theme").addEventListener("click", () => {
+    const d = r.dataset.theme ? r.dataset.theme === "dark" : matchMedia("(prefers-color-scheme: dark)").matches;
+    r.dataset.theme = d ? "light" : "dark"; try { localStorage.setItem("vm-theme", r.dataset.theme); } catch (e) {} });
+})();
+</script>
+</body>
+</html>

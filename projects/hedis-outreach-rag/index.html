@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>HEDIS Gap-Closure Outreach · Vaibhavi Mudunuru</title>
+<meta name="description" content="Case study: ranking Medicare Advantage members by Star Rating impact and drafting cited, safe outreach from public CMS and CDC data.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%232346c8'/%3E%3Ctext x='16' y='21.5' font-family='Arial' font-weight='700' font-size='14' fill='white' text-anchor='middle'%3EVM%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="../../assets/style.css">
+</head>
+<body>
+<nav class="nav" aria-label="Main">
+  <div class="wrap">
+    <a class="brand" href="../../"><span class="mark">VM</span>Vaibhavi Mudunuru</a>
+    <ul><li><a href="../../#projects">Projects</a></li><li><a href="../../#experience">Experience</a></li><li><a href="../../#contact">Contact</a></li></ul>
+    <button class="theme-btn" id="theme" type="button" aria-label="Switch light or dark theme">◐ Theme</button>
+  </div>
+</nav>
+
+<main class="wrap">
+  <header class="cs-hero read">
+    <a class="back" href="../../#projects">← All projects</a>
+    <p class="eyebrow" style="margin-top:22px">Project 02 · Quality measures</p>
+    <h1>HEDIS gap-closure outreach</h1>
+    <p class="lede">Who to reach first for the most Star Rating credit, how to reach them, and what to say, in a message that cites its sources and is safe to send.</p>
+    <div class="btns">
+      <a class="btn primary" href="https://mudunuru-vaibhavi.github.io/hedis-outreach-rag/" target="_blank" rel="noopener">Open the live dashboard ↗</a>
+      <a class="btn" href="https://github.com/mudunuru-vaibhavi/hedis-outreach-rag" target="_blank" rel="noopener">Read the code ↗</a>
+    </div>
+  </header>
+
+  <figure class="cs-figure">
+    <img src="../../assets/img/hedis-worklist.png" alt="Outreach worklist: synthetic members ranked by priority, with a cited outreach plan and draft messages pending approval" width="1280" height="1100">
+    <figcaption>The worklist: members ranked by Star impact; each plan names an action, a channel and a draft message with its evidence.</figcaption>
+  </figure>
+
+  <div class="cs-numbers">
+    <div><b>5</b><span>HEDIS measures, weighted as CMS weights them</span></div>
+    <div><b>3,144</b><span>counties ranked by screening gap and access barriers</span></div>
+    <div><b>9</b><span>systematic reviews and trials behind the outreach tactics</span></div>
+    <div><b>41</b><span>offline tests, including safety and injection fixtures</span></div>
+  </div>
+
+  <article class="cs read">
+    <h2>The problem</h2>
+    <p>Health plans are rated by CMS from 1 to 5 stars, and the stars drive quality bonus payments. Each measure, such as breast cancer screening or blood-pressure control, has cut points for each star level, and some measures count three times as much as others. A quality team with hundreds of open gaps has to decide who to call first, how to reach people who face real barriers, and what to say without exposing health information in a text message.</p>
+
+    <h2>How it works</h2>
+    <ol class="steps">
+      <li><span><b>Public data, snapshotted.</b> CMS 2027 Star Ratings and cut points, CDC PLACES county screening estimates and the CDC/ATSDR Social Vulnerability Index are downloaded once, checksummed and loaded into SQLite.</span></li>
+      <li><span><b>Distance to the next star.</b> For a chosen contract, each measure's rate is placed against its cut points, giving how many more members per 1,000 eligible must complete the service.</span></li>
+      <li><span><b>Prioritize members.</b> Each open measure scores its Star weight divided by how far the plan is from the next cut point; a member's score sums their open measures.</span></li>
+      <li><span><b>Choose the outreach.</b> County barriers (no vehicle, limited English, no broadband) pick the action and channel: mailed test kits, ride help, translated messages.</span></li>
+      <li><span><b>Ground the message.</b> Passages are retrieved from a cited knowledge base (CMS Technical Notes, USPSTF, NIH, evidence summaries) with BM25, or optionally a hybrid with vector search. A message with no supporting citation is not written.</span></li>
+      <li><span><b>Hold for approval.</b> Every draft is marked pending; nothing is sent from the tool.</span></li>
+    </ol>
+
+    <h2>Safety, built in and tested</h2>
+    <ul>
+      <li><b>No PHI in texts.</b> Text messages never name a condition, test or body part, and always include STOP opt-out language.</li>
+      <li><b>Retrieved text is data.</b> Web passages are wrapped as untrusted content and can't change the chosen action; test fixtures with injected instructions prove it.</li>
+      <li><b>Network off by default.</b> A backend switch (mock, snapshot, live) means nothing leaves the machine unless asked.</li>
+      <li><b>Traceable.</b> Every planning run writes a trace of inputs, evidence and outputs, without patient names.</li>
+    </ul>
+
+    <h2>Measures and the evidence behind each outreach</h2>
+    <div class="tbl"><table>
+      <thead><tr><th>Measure</th><th>Weight</th><th>Example outreach (evidence)</th></tr></thead>
+      <tbody>
+        <tr><td>Breast Cancer Screening (BCS)</td><td>1</td><td>Phone reminder that books the visit; ride help or mobile mammography (Ferrari 2025; Mosquera 2023)</td></tr>
+        <tr><td>Colorectal Cancer Screening (COL)</td><td>1</td><td>Mailed at-home stool test kit, then a reminder call (Jager 2019; Rubin 2023)</td></tr>
+        <tr><td>Diabetes Care – Eye Exam (EED)</td><td>1</td><td>Help to schedule; retinal photo in primary care (Zangalli 2016; Wu 2026)</td></tr>
+        <tr><td>Diabetes Care – Blood Sugar Controlled (GSD)</td><td><b>3</b></td><td>A1C test plus community health worker support (Evans 2023)</td></tr>
+        <tr><td>Controlling Blood Pressure (CBP)</td><td><b>3</b></td><td>Home blood-pressure monitoring with pharmacist follow-up (Acharya 2024; Bryant 2023)</td></tr>
+      </tbody>
+    </table></div>
+
+    <figure class="cs-figure" style="margin-top:28px">
+      <img src="../../assets/img/hedis-star-goals.png" alt="Star goals: five measures for one contract with rates, stars and distance to the next cut point" width="1280" height="1400" loading="lazy">
+      <figcaption>Star goals for one contract: rate, star level, next cut point and members needed per 1,000 eligible.</figcaption>
+    </figure>
+
+    <h2>Limits I'd state up front</h2>
+    <ul>
+      <li>County rates are survey-based estimates, not HEDIS rates from claims: they guide where to focus, not who to contact.</li>
+      <li>CMS doesn't publish denominators, so gaps are shown per 1,000 eligible members.</li>
+      <li>Messages come from vetted templates: consistent and safe, but less personal.</li>
+    </ul>
+    <p class="muted">Tech: Python · pandas · SQLite · rank-bm25 · ChromaDB (optional) · BeautifulSoup · pytest · GitHub Actions</p>
+
+    <div class="next-proj"><span><span class="muted">Next project</span><br><b>OMOP multi-site ETL and RWE study</b></span><a class="btn small" href="../omop-multisite-etl/">Read the case study →</a></div>
+  </article>
+</main>
+
+<footer class="site" style="margin-top:80px"><div class="wrap"><span>© 2026 Vaibhavi Mudunuru</span><span>Patients are synthetic; public data is real.</span></div></footer>
+<script>
+(() => { const r = document.documentElement;
+  try { const t = localStorage.getItem("vm-theme"); if (t) r.dataset.theme = t; } catch (e) {}
+  document.getElementById("theme").addEventListener("click", () => {
+    const d = r.dataset.theme ? r.dataset.theme === "dark" : matchMedia("(prefers-color-scheme: dark)").matches;
+    r.dataset.theme = d ? "light" : "dark"; try { localStorage.setItem("vm-theme", r.dataset.theme); } catch (e) {} });
+})();
+</script>
+</body>
+</html>
