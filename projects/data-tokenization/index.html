@@ -15,15 +15,15 @@
 <nav class="nav" aria-label="Main">
   <div class="wrap">
     <a class="brand" href="../../"><span class="mark">VM</span>Vaibhavi Mudunuru</a>
-    <ul><li><a href="../../#projects">Projects</a></li><li><a href="../../#side">Side projects</a></li><li><a href="../../#contact">Contact</a></li></ul>
+    <ul><li><a href="../../#projects">Projects</a></li><li><a href="../../#roles">What I do</a></li><li><a href="../../#contact">Contact</a></li></ul>
     <button class="theme-btn" id="theme" type="button" aria-label="Switch light or dark theme">◐ Theme</button>
   </div>
 </nav>
 
 <main class="wrap">
   <header class="cs-hero read">
-    <a class="back" href="../../#side">← All projects</a>
-    <p class="eyebrow" style="margin-top:22px">Side project · PHI security</p>
+    <a class="back" href="../../#projects">← All projects</a>
+    <p class="eyebrow" style="margin-top:22px">Project 03 · PHI security · software</p>
     <h1>Data Tokenization</h1>
     <p class="lede">Geocoding 700,000 patients without plaintext PHI ever leaving the vault boundary: tokenize at the edge, detokenize only inside a least-privilege service, call the vendor with the minimum necessary, retokenize, and prove nothing leaked.</p>
     <div class="btns">
@@ -45,6 +45,13 @@
   </div>
 
   <article class="cs read">
+    <h2 style="margin-top:8px">Questions it answers</h2>
+    <ul class="questions" style="padding-left:0">
+      <li>Can we geocode 700,000 patients without the vendor learning who anyone is?</li>
+      <li>Who read which key, who detokenized which field, and who was denied?</li>
+      <li>Can we prove that nothing leaked, at rest or at the vendor?</li>
+      <li>Where are our patients, without any dot pointing at a household?</li>
+    </ul>
     <h2>The problem</h2>
     <p>Mapping patients needs their addresses geocoded: turned into coordinates, counties and map cells. The best geocoders are outside vendors, and an address is protected health information. Sending a whole patient table out is not acceptable; not geocoding at all leaves access-to-care and outreach questions unanswered. The job is to get the coordinates while the vendor sees only what it must, and nothing in the data lake can identify anyone.</p>
 
@@ -95,7 +102,7 @@
     </ul>
     <p class="muted">Tech: Python · pandas · DuckDB · cryptography (AES-256-GCM, HMAC-SHA256) · Azure Key Vault SDK · REST batch API · Plotly · pytest</p>
 
-    <div class="next-proj"><span><span class="muted">Back to</span><br><b>All projects</b></span><a class="btn small" href="../../#projects">See the main projects →</a></div>
+    <div class="next-proj"><span><span class="muted">Next project</span><br><b>HEDIS gap-closure outreach</b></span><a class="btn small" href="../hedis-outreach-rag/">Read the case study →</a></div>
   </article>
 </main>
 

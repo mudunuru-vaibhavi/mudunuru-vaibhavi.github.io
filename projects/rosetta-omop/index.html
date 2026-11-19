@@ -23,7 +23,7 @@
 <main class="wrap">
   <header class="cs-hero read">
     <a class="back" href="../../#projects">← All projects</a>
-    <p class="eyebrow" style="margin-top:22px">Project 03 · Rosetta · Clinical informatics · RWE</p>
+    <p class="eyebrow" style="margin-top:22px">Project 02 · Rosetta · Clinical informatics · RWE</p>
     <h1>Rosetta: one OMOP warehouse from two very different EHR exports</h1>
     <p class="lede">An Epic Clarity extract and a FHIR R4 bulk export, mapped with PySpark into one OMOP CDM v5.4 warehouse, tested with 163 OHDSI-style checks, and used for a new-user cohort study whose right answer was known in advance.</p>
     <div class="btns">
@@ -45,6 +45,13 @@
   </div>
 
   <article class="cs read">
+    <h2 style="margin-top:8px">Questions it answers</h2>
+    <ul class="questions" style="padding-left:0">
+      <li>Can an Epic Clarity extract and a FHIR export answer the same research question?</li>
+      <li>Can we trust the converted data? Which checks fail, and why?</li>
+      <li>Does glipizide raise hypoglycemia risk compared with metformin?</li>
+      <li>Does a risk model built at one hospital work at another?</li>
+    </ul>
     <h2>The problem</h2>
     <p>Every EHR stores data differently, so a study written for one hospital can't run at another. The OMOP Common Data Model fixes that: every site converts its data into the same tables and the same standard codes. The hard part is the conversion itself, especially when the sources are as different as an Epic Clarity extract and a FHIR export, and proving afterwards that the converted data still tells the truth.</p>
 
@@ -88,7 +95,7 @@
     </ul>
     <p class="muted">Tech: PySpark · DuckDB · OMOP CDM v5.4 · FHIR R4 · Airflow 3 · boto3 (S3) · lifelines · scikit-learn · pytest · GitHub Actions</p>
 
-    <div class="next-proj"><span><span class="muted">Back to</span><br><b>All projects</b></span><a class="btn small" href="../../#projects">See all three →</a></div>
+    <div class="next-proj"><span><span class="muted">Next project</span><br><b>Data Tokenization</b></span><a class="btn small" href="../data-tokenization/">Read the case study →</a></div>
   </article>
 </main>
 

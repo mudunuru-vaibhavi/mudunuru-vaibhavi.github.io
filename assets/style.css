@@ -222,3 +222,47 @@ footer.site .wrap { display: flex; flex-wrap: wrap; gap: 8px 24px; justify-conte
 .tbl tr:last-child td { border-bottom: 0; }
 .tbl td.num { text-align: right; font-variant-numeric: tabular-nums; }
 .next-proj { margin-top: 64px; padding: 24px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; align-items: center; }
+
+/* ---------- v2 additions: roles, problems, impact ---------- */
+.roles-line { display: flex; flex-wrap: wrap; gap: 8px 10px; margin: 6px 0 22px; }
+.role-chip { font: 600 14px var(--body); padding: 6px 12px; border-radius: 999px; border: 1px solid var(--line); background: var(--surface); color: var(--ink); display: inline-flex; align-items: center; gap: 8px; }
+.role-chip i { width: 8px; height: 8px; border-radius: 50%; background: var(--rc); display: block; }
+:root { --r-se: #2346c8; --r-de: #0f8a6c; --r-da: #b4570e; --r-bi: #9b3fb8; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --r-se: #8aa4ff; --r-de: #4fd1ad; --r-da: #f39c5a; --r-bi: #d58cf0; } }
+:root[data-theme="dark"] { --r-se: #8aa4ff; --r-de: #4fd1ad; --r-da: #f39c5a; --r-bi: #d58cf0; }
+
+.roles { display: grid; grid-template-columns: minmax(0, 300px) minmax(0, 1fr); gap: 0; border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; background: var(--surface); }
+.role-tabs { display: flex; flex-direction: column; border-right: 1px solid var(--line); }
+.role-tab { all: unset; cursor: pointer; padding: 20px 22px; border-bottom: 1px solid var(--line); display: grid; gap: 4px; border-left: 4px solid transparent; }
+.role-tab:last-child { border-bottom: 0; }
+.role-tab b { font: 700 19px/1.2 var(--display); color: var(--ink); }
+.role-tab span { font-size: 13.5px; color: var(--ink-3); }
+.role-tab[aria-selected="true"] { background: var(--surface-2); border-left-color: var(--rc); }
+.role-tab:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; }
+.role-panel { padding: 28px 30px; display: grid; gap: 18px; align-content: start; min-width: 0; }
+.role-panel h3 { font-size: 26px; line-height: 1.15; }
+.role-panel .what { color: var(--ink-2); font-size: 16.5px; max-width: 62ch; }
+.proof { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 10px; }
+.proof a, .proof div { display: grid; gap: 2px; padding: 12px 14px; border: 1px solid var(--line); border-radius: 10px; text-decoration: none; color: var(--ink); background: var(--surface); }
+.proof a:hover { border-color: var(--rc); }
+.proof small { color: var(--ink-3); font-size: 12.5px; font-family: var(--mono); }
+@media (max-width: 860px) { .roles { grid-template-columns: minmax(0, 1fr); } .role-tabs { flex-direction: row; overflow-x: auto; border-right: 0; border-bottom: 1px solid var(--line); } .role-tab { border-bottom: 0; border-left: 0; border-bottom: 3px solid transparent; padding: 14px 16px; min-width: 150px; } .role-tab[aria-selected="true"] { border-bottom-color: var(--rc); } .role-tab span { display: none; } }
+
+.impact { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; margin-bottom: 64px; }
+.impact div { background: var(--surface); padding: 20px 18px; display: grid; gap: 4px; }
+.impact b { font: 700 30px/1.05 var(--display); letter-spacing: -.02em; font-variant-numeric: tabular-nums; }
+.impact span { font-size: 13.5px; color: var(--ink-2); }
+.impact small { font: 500 11.5px var(--mono); color: var(--ink-3); text-transform: uppercase; letter-spacing: .06em; }
+
+.problem { border-left: 3px solid var(--signal); padding: 4px 0 4px 14px; color: var(--ink); font-size: 16.5px; }
+.problem b { display: block; font: 600 12px var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--signal); margin-bottom: 2px; }
+.questions { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+.questions li { position: relative; padding: 10px 14px 10px 40px; background: var(--surface); border: 1px solid var(--line); border-radius: 10px; color: var(--ink); font-size: 15px; }
+.questions li::before { content: "?"; position: absolute; left: 12px; top: 10px; width: 20px; height: 20px; border-radius: 6px; background: var(--accent-soft); color: var(--accent); font: 700 13px/20px var(--display); text-align: center; }
+.label { font: 600 12px var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--ink-3); }
+.metrics.four { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+@media (max-width: 560px) { .metrics.four { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.role-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+.role-tags span { font: 600 12px var(--body); padding: 3px 9px; border-radius: 999px; color: var(--rc); border: 1px solid currentColor; display: inline-flex; align-items: center; gap: 6px; }
+.role-tags span::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+.job .role-tags { margin: -4px 0 12px; }

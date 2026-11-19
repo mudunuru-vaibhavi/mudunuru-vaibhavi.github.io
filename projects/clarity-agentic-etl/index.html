@@ -23,7 +23,7 @@
 <main class="wrap">
   <header class="cs-hero read">
     <a class="back" href="../../#projects">← All projects</a>
-    <p class="eyebrow" style="margin-top:22px">Project 01 · Data engineering</p>
+    <p class="eyebrow" style="margin-top:22px">Project 01 · Data engineering · BI</p>
     <h1>Self-healing Epic Clarity ETL</h1>
     <p class="lede">A nightly pipeline from Epic Clarity to a SQL warehouse that checks everything before it loads, sends an agent to investigate failures, and ends in one dashboard for executives, finance, data and IT.</p>
     <div class="btns">
@@ -46,6 +46,13 @@
   </div>
 
   <article class="cs read">
+    <h2 style="margin-top:8px">Questions it answers</h2>
+    <ul class="questions" style="padding-left:0">
+      <li>Did last night's load land, and if not, exactly why?</li>
+      <li>Can the pipeline fix itself when a file is damaged in transit?</li>
+      <li>How old is our A/R, and which payers deny most?</li>
+      <li>Are visit volumes and no-shows holding up by department?</li>
+    </ul>
     <h2>The problem</h2>
     <p>Hospitals report from Epic's Clarity database, which a data team copies every night into its own warehouse. When that copy breaks, someone has to find out why at 2 AM: a file cut short in transfer, a column Epic added after an upgrade, rows pointing at visits that were never sent. Until it is fixed, every report downstream is a day stale, and loading bad data is worse than loading none.</p>
     <p>This project rebuilds that whole path as a working proof of concept, then adds an agent that does the first hour of on-call investigation.</p>
@@ -90,7 +97,7 @@
     </ul>
     <p class="muted">Tech: Python · SQL · SQLAlchemy · pandas · Paramiko (SFTP) · SQL Server · SQLite · Streamlit · Plotly · pytest · Docker · GitHub Actions</p>
 
-    <div class="next-proj"><span><span class="muted">Next project</span><br><b>HEDIS gap-closure outreach</b></span><a class="btn small" href="../hedis-outreach-rag/">Read the case study →</a></div>
+    <div class="next-proj"><span><span class="muted">Next project</span><br><b>Rosetta: one OMOP warehouse from two EHR formats</b></span><a class="btn small" href="../rosetta-omop/">Read the case study →</a></div>
   </article>
 </main>
 

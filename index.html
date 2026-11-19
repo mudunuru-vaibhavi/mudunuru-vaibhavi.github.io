@@ -3,10 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Vaibhavi Mudunuru · Health Data</title>
-<meta name="description" content="Health data analyst and clinical data engineer. Epic Clarity pipelines, OMOP and FHIR, data quality, HEDIS and real-world evidence. Three end-to-end projects with live dashboards.">
-<meta property="og:title" content="Vaibhavi Mudunuru · Health Data">
-<meta property="og:description" content="Epic Clarity pipelines, OMOP and FHIR, data quality, HEDIS and real-world evidence: three end-to-end projects with live dashboards.">
+<title>Vaibhavi Mudunuru · Healthcare Data Engineer</title>
+<meta name="description" content="Software engineer, data engineer, data analyst and BI developer in healthcare. Epic Clarity pipelines, OMOP and FHIR, PHI tokenization, HEDIS and real-world evidence, with live dashboards for every project.">
+<meta property="og:title" content="Vaibhavi Mudunuru · From the 2 AM data drop to the 9 AM dashboard">
+<meta property="og:description" content="Software engineer, data engineer, data analyst and BI developer in healthcare. Four end-to-end projects with live dashboards.">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%232346c8'/%3E%3Ctext x='16' y='21.5' font-family='Arial' font-weight='700' font-size='14' fill='white' text-anchor='middle'%3EVM%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -20,9 +20,8 @@
   <div class="wrap">
     <a class="brand" href="#top"><span class="mark">VM</span>Vaibhavi Mudunuru</a>
     <ul>
+      <li><a href="#roles">What I do</a></li>
       <li><a href="#projects">Projects</a></li>
-      <li><a href="#side">Side projects</a></li>
-      <li><a href="#practice">How I work</a></li>
       <li><a href="#experience">Experience</a></li>
       <li><a href="#skills">Skills</a></li>
       <li><a href="#contact">Contact</a></li>
@@ -34,203 +33,242 @@
 <header class="hero">
   <div class="wrap">
     <div>
-      <span class="eyebrow">Health data analyst · clinical data engineering</span>
-      <h1>I turn messy healthcare data into <em>decisions people trust.</em></h1>
-      <p class="lede">Six years across clinics, a university research office and dental departments: Epic Clarity pipelines, quality measures, dashboards and automation, with patient data protected the whole way. Below are three systems I built end to end, each with a live dashboard and its code.</p>
-      <div class="btns">
-        <a class="btn primary" href="#projects">See the projects ↓</a>
+      <span class="eyebrow">Vaibhavi Mudunuru · healthcare data, end to end</span>
+      <h1>From the 2 AM data drop to the <em>9 AM dashboard.</em></h1>
+      <div class="roles-line" aria-label="Roles">
+        <span class="role-chip" style="--rc:var(--r-se)"><i></i>Software Engineer</span>
+        <span class="role-chip" style="--rc:var(--r-de)"><i></i>Data Engineer</span>
+        <span class="role-chip" style="--rc:var(--r-da)"><i></i>Data Analyst</span>
+        <span class="role-chip" style="--rc:var(--r-bi)"><i></i>BI Developer</span>
+      </div>
+      <p class="lede">Six years of taking healthcare questions from raw Epic tables to a decision. I write the code, build and harden the pipelines, run the analysis and ship the dashboards, with patient data protected at every step. One person, the whole path.</p>
+      <div class="btns" style="margin-top:28px">
+        <a class="btn primary" href="#projects">See the work ↓</a>
         <a class="btn" href="https://github.com/mudunuru-vaibhavi" target="_blank" rel="noopener">GitHub ↗</a>
-        <a class="btn" href="#contact">Contact</a>
+        <a class="btn" href="#contact">Get in touch</a>
       </div>
     </div>
 
-    <div class="term" aria-label="Sample output from the three projects">
+    <div class="term" aria-label="Sample output from the projects">
       <div class="term-bar" role="tablist">
-        <button class="term-tab" role="tab" aria-selected="true" data-trace="clarity" id="tab-clarity">clarity-etl · nightly</button>
-        <button class="term-tab" role="tab" aria-selected="false" data-trace="omop" id="tab-omop">omop-etl · mapping</button>
-        <button class="term-tab" role="tab" aria-selected="false" data-trace="hedis" id="tab-hedis">outreach · worklist</button>
+        <button class="term-tab" role="tab" aria-selected="true" data-trace="clarity">clarity-etl</button>
+        <button class="term-tab" role="tab" aria-selected="false" data-trace="omop">rosetta</button>
+        <button class="term-tab" role="tab" aria-selected="false" data-trace="hedis">outreach</button>
+        <button class="term-tab" role="tab" aria-selected="false" data-trace="tok">tokenize-geo</button>
       </div>
       <div class="term-body" id="trace" role="tabpanel" aria-live="polite"></div>
-      <div class="term-foot"><span id="trace-note">Cedar Valley Health · synthetic data</span><span>output from the projects below</span></div>
+      <div class="term-foot"><span id="trace-note">Cedar Valley Health · synthetic Epic Clarity</span><span>real output, synthetic data</span></div>
     </div>
   </div>
 </header>
 
 <div class="stats" aria-label="Career highlights">
   <div class="wrap">
-    <div class="stat"><b>6+ yrs</b><span>in healthcare data, from dental clinics to a multi-clinic network</span></div>
-    <div class="stat"><b>250+</b><span>Epic Clarity and Caboodle tables feeding production ETL</span></div>
-    <div class="stat"><b>70+</b><span>clinic locations with minute-level patient-flow reporting</span></div>
-    <div class="stat"><b>20+</b><span>HEDIS and Star Ratings quality measures tracked</span></div>
+    <div class="stat"><b>6+ yrs</b><span>in healthcare data: clinics, research, dental care</span></div>
+    <div class="stat"><b>250+</b><span>Epic Clarity and Caboodle tables in production ETL</span></div>
+    <div class="stat"><b>~40 → 0.3</b><span>hours a week of pipeline upkeep after automation</span></div>
+    <div class="stat"><b>65%</b><span>lift in HEDIS / Star measure compliance in one quarter</span></div>
   </div>
 </div>
 
-<section class="band" id="projects">
+<section class="band" id="roles">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">What I do</span>
+      <h2>One person, four roles. Pick one.</h2>
+      <p class="lede">Most teams hand a data question across four desks. I've worked every desk, so nothing gets lost between them.</p>
+    </div>
+    <div class="roles">
+      <div class="role-tabs" role="tablist" aria-label="Roles">
+        <button class="role-tab" role="tab" aria-selected="true" data-role="se" style="--rc:var(--r-se)"><b>Software Engineer</b><span>Tested, packaged, automated code</span></button>
+        <button class="role-tab" role="tab" aria-selected="false" data-role="de" style="--rc:var(--r-de)"><b>Data Engineer</b><span>Pipelines that heal and never half-load</span></button>
+        <button class="role-tab" role="tab" aria-selected="false" data-role="da" style="--rc:var(--r-da)"><b>Data Analyst</b><span>Questions answered with evidence</span></button>
+        <button class="role-tab" role="tab" aria-selected="false" data-role="bi" style="--rc:var(--r-bi)"><b>BI Developer</b><span>Dashboards people act on</span></button>
+      </div>
+      <div class="role-panel" id="role-panel" role="tabpanel" aria-live="polite"></div>
+    </div>
+  </div>
+</section>
+
+<section class="band alt" id="projects">
   <div class="wrap">
     <div class="section-head">
       <span class="eyebrow">Projects</span>
-      <h2>Three systems, built end to end and tested like production.</h2>
-      <p class="lede">Each one starts from raw source data and ends in a dashboard someone could act on. All patient data is synthetic; codes and public datasets are real.</p>
+      <h2>Four systems, built end to end. Every one has a live dashboard.</h2>
+      <p class="lede">Each starts with a real healthcare problem, runs on synthetic patients and real public codes, and ends with numbers you can check.</p>
+    </div>
+
+    <div class="impact" aria-label="Impact across projects">
+      <div><small>Rosetta</small><b>886,847</b><span>EHR records mapped to OMOP, 100% to standard concepts</span></div>
+      <div><small>Data Tokenization</small><b>700,000</b><span>patients geocoded with zero PHI leaks</span></div>
+      <div><small>Clarity ETL</small><b>140</b><span>nightly loads; failures healed or escalated</span></div>
+      <div><small>HEDIS outreach</small><b>3,144</b><span>counties ranked for screening outreach</span></div>
+      <div><small>Across all four</small><b>300+</b><span>automated quality checks and tests</span></div>
     </div>
 
     <!-- 01 -->
-    <article class="project">
+    <article class="project" id="p-clarity">
       <div class="project-text">
-        <div class="project-num">01 <span class="tag">Data engineering</span></div>
+        <div class="project-num">01 <span class="tag">Data engineering · BI</span></div>
         <h3>Self-healing Epic Clarity ETL</h3>
-        <p class="summary">Nightly Clarity extracts move over SFTP into a SQL warehouse. Every file and row is checked before it lands, and an investigation agent diagnoses failures: it fixes what is safe to fix and asks a person before anything else.</p>
-        <ul class="facts">
-          <li>140 nights of simulated Clarity data across 16 tables: visits, charges, payments and denials</li>
-          <li>About 80 checks a night; each night loads all or nothing, with a full audit trail</li>
-          <li>A truncated transfer heals itself in 4 minutes; a new column that looks like PHI is held for approval</li>
-          <li>CI loads real SQL Server and SFTP containers on every push</li>
+        <p class="problem"><b>The problem</b>Nightly Clarity copies break at 2 AM: a truncated file, a column Epic added overnight. Reports go stale, and loading bad data is worse than loading none.</p>
+        <div class="label">Questions it answers</div>
+        <ul class="questions">
+          <li>Did last night's load land, and if not, exactly why?</li>
+          <li>Can the pipeline fix itself when a file is damaged in transit?</li>
+          <li>How old is our A/R, and which payers deny most?</li>
+          <li>Are visit volumes and no-shows holding up by department?</li>
         </ul>
-        <div class="metrics">
+        <div class="metrics four">
           <div><b>~80</b><span>checks per night</span></div>
-          <div><b>1 of 2</b><span>failures healed with no human</span></div>
-          <div><b>4</b><span>audiences: exec, finance, data, IT</span></div>
+          <div><b>4 min</b><span>to self-heal a damaged file</span></div>
+          <div><b>0</b><span>half-loaded nights</span></div>
+          <div><b>4</b><span>audiences on one dashboard</span></div>
         </div>
-        <div class="chips"><span class="chip">Python</span><span class="chip">SQL Server</span><span class="chip">SQLAlchemy</span><span class="chip">pandas</span><span class="chip">SFTP</span><span class="chip">Plotly</span><span class="chip">Docker</span><span class="chip">GitHub Actions</span></div>
+        <div class="role-tags"><span style="color:var(--r-de)">Data Engineer</span><span style="color:var(--r-se)">Software Engineer</span><span style="color:var(--r-bi)">BI Developer</span></div>
+        <div class="chips"><span class="chip">Python</span><span class="chip">SQL Server</span><span class="chip">SQLAlchemy</span><span class="chip">SFTP</span><span class="chip">Plotly</span><span class="chip">Docker</span><span class="chip">GitHub Actions</span></div>
         <div class="btns">
           <a class="btn primary small" href="https://mudunuru-vaibhavi.github.io/clarity-agentic-etl/" target="_blank" rel="noopener">Live dashboard ↗</a>
           <a class="btn small" href="https://github.com/mudunuru-vaibhavi/clarity-agentic-etl" target="_blank" rel="noopener">Code ↗</a>
           <a class="btn small" href="projects/clarity-agentic-etl/">Case study →</a>
         </div>
       </div>
-      <div class="shot" data-gallery="clarity">
+      <div class="shot" data-gallery>
         <figure>
           <div class="chrome"><i></i><i></i><i></i><span>clarity-agentic-etl · dashboard</span></div>
           <img src="assets/img/clarity-executive.png" alt="Executive view: visits, no-show rate, ED visits and a daily visits chart" width="1440" height="900" loading="lazy">
           <figcaption>Visits, no-shows, ED volume and department load, compared with the prior period.</figcaption>
         </figure>
         <div class="shot-tabs" role="group" aria-label="Dashboard views">
-          <button type="button" aria-pressed="true" data-src="assets/img/clarity-executive.png" data-alt="Executive view: visits, no-show rate, ED visits and a daily visits chart" data-cap="Visits, no-shows, ED volume and department load, compared with the prior period.">Executive</button>
-          <button type="button" aria-pressed="false" data-src="assets/img/clarity-finance.png" data-alt="Finance view: A/R aging by payer class, charges versus payments, denial reasons" data-cap="A/R aging by payer class, collections against charges, payer denial rates and reasons.">Finance</button>
-          <button type="button" aria-pressed="false" data-src="assets/img/clarity-data-quality.png" data-alt="Data quality view: check results over time and table freshness" data-cap="Nightly check results, table freshness and blank-value trends.">Data quality</button>
-          <button type="button" aria-pressed="false" data-src="assets/img/clarity-it.png" data-alt="IT view: nightly runs with two failures and the agent's incident reports" data-cap="Every nightly run, each failure the agent investigated, and what it did.">IT</button>
+          <button type="button" aria-pressed="true" data-src="assets/img/clarity-executive.png" data-alt="Executive view" data-cap="Visits, no-shows, ED volume and department load, compared with the prior period.">Executive</button>
+          <button type="button" aria-pressed="false" data-src="assets/img/clarity-finance.png" data-alt="Finance view: A/R aging, collections and denials" data-cap="A/R aging by payer class, collections against charges, payer denial rates and reasons.">Finance</button>
+          <button type="button" aria-pressed="false" data-src="assets/img/clarity-data-quality.png" data-alt="Data quality view" data-cap="Nightly check results, table freshness and blank-value trends.">Data quality</button>
+          <button type="button" aria-pressed="false" data-src="assets/img/clarity-it.png" data-alt="IT view: nightly runs and incident reports" data-cap="Every nightly run, each failure the agent investigated, and what it did.">IT</button>
         </div>
       </div>
     </article>
 
     <!-- 02 -->
-    <article class="project flip">
+    <article class="project flip" id="p-rosetta">
       <div class="project-text">
-        <div class="project-num">02 <span class="tag">Quality measures</span></div>
-        <h3>HEDIS gap-closure outreach</h3>
-        <p class="summary">For a Medicare Advantage plan, it ranks which members to reach first for the most Star Rating credit, picks how to reach them, and drafts a message grounded in cited public evidence, held for human approval.</p>
-        <ul class="facts">
-          <li>Real public data: CMS 2027 Star Ratings and cut points, CDC PLACES, CDC/ATSDR SVI, USPSTF and NIH</li>
-          <li>Priority = Star weight × distance to the next cut point, with the 3× weighted measures doing the heavy lifting</li>
-          <li>Retrieval over a cited knowledge base (BM25, optional hybrid vectors); no citation, no message</li>
-          <li>Guardrails tested: no PHI in texts, opt-out language, injected web text treated as data</li>
+        <div class="project-num">02 <span class="tag">Clinical informatics · RWE</span></div>
+        <h3>Rosetta: two EHR formats, one OMOP warehouse</h3>
+        <p class="problem"><b>The problem</b>Every EHR stores data differently, so a study written for one hospital can't run at another, and nobody can say whether converted data still tells the truth.</p>
+        <div class="label">Questions it answers</div>
+        <ul class="questions">
+          <li>Can an Epic Clarity extract and a FHIR export answer the same research question?</li>
+          <li>Can we trust the converted data? Which checks fail, and why?</li>
+          <li>Does glipizide raise hypoglycemia risk compared with metformin?</li>
+          <li>Does a risk model built at one hospital work at another?</li>
         </ul>
-        <div class="metrics">
-          <div><b>5</b><span>HEDIS measures, CMS-weighted</span></div>
-          <div><b>3,000+</b><span>counties ranked for focus</span></div>
-          <div><b>41</b><span>offline tests incl. safety</span></div>
-        </div>
-        <div class="chips"><span class="chip">Python</span><span class="chip">SQLite</span><span class="chip">pandas</span><span class="chip">BM25</span><span class="chip">ChromaDB</span><span class="chip">CMS Star Ratings</span><span class="chip">CDC PLACES</span></div>
-        <div class="btns">
-          <a class="btn primary small" href="https://mudunuru-vaibhavi.github.io/hedis-outreach-rag/" target="_blank" rel="noopener">Live dashboard ↗</a>
-          <a class="btn small" href="https://github.com/mudunuru-vaibhavi/hedis-outreach-rag" target="_blank" rel="noopener">Code ↗</a>
-          <a class="btn small" href="projects/hedis-outreach-rag/">Case study →</a>
-        </div>
-      </div>
-      <div class="shot" data-gallery="hedis">
-        <figure>
-          <div class="chrome"><i></i><i></i><i></i><span>hedis-outreach-rag · dashboard</span></div>
-          <img src="assets/img/hedis-worklist.png" alt="Outreach worklist: synthetic patients ranked by priority with a cited outreach plan" width="1280" height="1100" loading="lazy">
-          <figcaption>Members ranked by Star impact, each with a cited plan and a draft pending approval.</figcaption>
-        </figure>
-        <div class="shot-tabs" role="group" aria-label="Dashboard views">
-          <button type="button" aria-pressed="true" data-src="assets/img/hedis-worklist.png" data-alt="Outreach worklist with a cited outreach plan" data-cap="Members ranked by Star impact, each with a cited plan and a draft pending approval.">Worklist</button>
-          <button type="button" aria-pressed="false" data-src="assets/img/hedis-star-goals.png" data-alt="Star goals: five measures with rates, stars and distance to the next cut point" data-cap="For any contract: rate, stars and members needed per 1,000 to reach the next cut point.">Star goals</button>
-          <button type="button" aria-pressed="false" data-src="assets/img/hedis-focus.png" data-alt="Where to focus: counties with low screening rates and access barriers" data-cap="Counties with the lowest screening rates and the biggest access barriers.">Where to focus</button>
-        </div>
-      </div>
-    </article>
-
-    <!-- 03 -->
-    <article class="project">
-      <div class="project-text">
-        <div class="project-num">03 <span class="tag">Clinical informatics · RWE</span></div>
-        <h3>Rosetta: one OMOP warehouse from two EHR formats</h3>
-        <p class="summary">Two health systems, two formats: an Epic Clarity extract and a FHIR R4 bulk export. A PySpark ETL maps both into one OMOP CDM v5.4 warehouse, 163 OHDSI-style checks test it, and a new-user cohort study runs on top, with a known right answer to check against.</p>
-        <ul class="facts">
-          <li>ICD-10-CM, SNOMED, LOINC, RxNorm and CPT mapped through <code>Maps to</code>, routed by domain, with units harmonised (ounces, pounds, IFCC HbA1c)</li>
-          <li>Local codes mapped through a reviewed <code>SOURCE_TO_CONCEPT_MAP</code>: 4 of 6 automatic suggestions corrected</li>
-          <li>Kaplan–Meier, Cox and IPTW recover a planted effect: HR 2.28 vs an oracle of 2.19</li>
-          <li>Orchestrated with Airflow 3; files land in S3 with checksum manifests</li>
-        </ul>
-        <div class="metrics">
+        <div class="metrics four">
           <div><b>100%</b><span>of 886,847 records mapped</span></div>
           <div><b>157/157</b><span>quality checks pass</span></div>
-          <div><b>0.70</b><span>risk-model AUC at the other site</span></div>
+          <div><b>2.28</b><span>hazard ratio vs truth 2.19</span></div>
+          <div><b>0.70</b><span>AUC at the other hospital</span></div>
         </div>
-        <div class="chips"><span class="chip">PySpark</span><span class="chip">OMOP CDM</span><span class="chip">FHIR R4</span><span class="chip">DuckDB</span><span class="chip">Airflow</span><span class="chip">AWS S3</span><span class="chip">lifelines</span><span class="chip">scikit-learn</span></div>
+        <div class="role-tags"><span style="color:var(--r-de)">Data Engineer</span><span style="color:var(--r-da)">Data Analyst</span><span style="color:var(--r-se)">Software Engineer</span></div>
+        <div class="chips"><span class="chip">PySpark</span><span class="chip">OMOP CDM</span><span class="chip">FHIR R4</span><span class="chip">Airflow</span><span class="chip">DuckDB</span><span class="chip">AWS S3</span><span class="chip">lifelines</span></div>
         <div class="btns">
           <a class="btn primary small" href="https://mudunuru-vaibhavi.github.io/rosetta-omop/" target="_blank" rel="noopener">Live dashboard ↗</a>
           <a class="btn small" href="https://github.com/mudunuru-vaibhavi/rosetta-omop" target="_blank" rel="noopener">Code ↗</a>
           <a class="btn small" href="projects/rosetta-omop/">Case study →</a>
         </div>
       </div>
-      <div class="shot" data-gallery="omop">
+      <div class="shot" data-gallery>
         <figure>
           <div class="chrome"><i></i><i></i><i></i><span>rosetta-omop · dashboard</span></div>
-          <img src="assets/img/omop-study.png" alt="Study view: cumulative incidence curves, hazard ratio forest plot, covariate balance and calibration" width="1280" height="1400" loading="lazy">
+          <img src="assets/img/omop-study.png" alt="Study view: Kaplan-Meier curves, hazard ratios, balance and calibration" width="1280" height="1400" loading="lazy">
           <figcaption>Glipizide vs metformin: Kaplan–Meier curves, hazard ratios against the true value, balance and calibration.</figcaption>
         </figure>
         <div class="shot-tabs" role="group" aria-label="Dashboard views">
-          <button type="button" aria-pressed="true" data-src="assets/img/omop-study.png" data-alt="Study view with Kaplan-Meier curves and a hazard ratio forest plot" data-cap="Glipizide vs metformin: Kaplan–Meier curves, hazard ratios against the true value, balance and calibration.">RWE study</button>
-          <button type="button" aria-pressed="false" data-src="assets/img/omop-mapping.png" data-alt="Vocabulary mapping: coverage by site and the reviewed local mappings" data-cap="Mapping coverage by site, and every local-code decision with its automated checks.">Mapping</button>
-          <button type="button" aria-pressed="false" data-src="assets/img/omop-dq.png" data-alt="Data quality: 163 checks by Kahn category" data-cap="163 checks by Kahn category; every planted defect is flagged.">Data quality</button>
-          <button type="button" aria-pressed="false" data-src="assets/img/omop-sites.png" data-alt="Sites compared: age, visits, conditions and harmonised body weight" data-cap="Two sites after harmonisation: ounces, pounds and kilograms land on the same median.">Sites</button>
+          <button type="button" aria-pressed="true" data-src="assets/img/omop-study.png" data-alt="Study view" data-cap="Glipizide vs metformin: Kaplan–Meier curves, hazard ratios against the true value, balance and calibration.">RWE study</button>
+          <button type="button" aria-pressed="false" data-src="assets/img/omop-mapping.png" data-alt="Vocabulary mapping" data-cap="Mapping coverage by site, and every local-code decision with its automated checks.">Mapping</button>
+          <button type="button" aria-pressed="false" data-src="assets/img/omop-dq.png" data-alt="Data quality checks" data-cap="163 checks by Kahn category; every planted defect is flagged.">Data quality</button>
+          <button type="button" aria-pressed="false" data-src="assets/img/omop-sites.png" data-alt="Sites compared" data-cap="Two sites after harmonisation: ounces, pounds and kilograms land on the same median.">Sites</button>
         </div>
       </div>
     </article>
-  </div>
-</section>
 
-<section class="band alt" id="side">
-  <div class="wrap">
-    <div class="section-head">
-      <span class="eyebrow">Side projects</span>
-      <h2>Smaller builds that go deep on one hard problem.</h2>
-    </div>
-    <article class="project">
+    <!-- 03 -->
+    <article class="project" id="p-tok">
       <div class="project-text">
-        <div class="project-num">S1 <span class="tag">PHI security</span></div>
-        <h3>Data Tokenization</h3>
-        <p class="summary">Geocoding 700,000 patients without plaintext PHI leaving the vault boundary. Identifiers become tokens at the edge; a service account detokenizes only street, city and ZIP, in memory, for the batch it sends; the vendor's coordinates are retokenized on arrival.</p>
-        <ul class="facts">
-          <li>Deterministic HMAC tokens keep joins working; an AES-256-GCM token vault makes them reversible</li>
-          <li>Keys in a key vault with Azure-style roles: the tokenizer can read and write, the geocoder can only read</li>
-          <li>Field-level policy: the geocoder may detokenize addresses, never SSNs; every attempt is audited</li>
-          <li>Leak scan of the lake and the vendor's own request log: zero identifiers found</li>
+        <div class="project-num">03 <span class="tag">PHI security · software</span></div>
+        <h3>Data Tokenization: geocoding without exposing PHI</h3>
+        <p class="problem"><b>The problem</b>Mapping patients needs their addresses geocoded by an outside vendor, and an address is protected health information.</p>
+        <div class="label">Questions it answers</div>
+        <ul class="questions">
+          <li>Can we geocode 700,000 patients without the vendor learning who anyone is?</li>
+          <li>Who read which key, who detokenized which field, and who was denied?</li>
+          <li>Can we prove that nothing leaked, at rest or at the vendor?</li>
+          <li>Where are our patients, without any dot pointing at a household?</li>
         </ul>
-        <div class="metrics">
-          <div><b>700K</b><span>patients in 76 seconds</span></div>
-          <div><b>288K</b><span>vendor calls saved by de-duplicating households</span></div>
-          <div><b>0</b><span>identifiers found at rest or at the vendor</span></div>
+        <div class="metrics four">
+          <div><b>76 s</b><span>for 700,000 patients</span></div>
+          <div><b>288K</b><span>vendor calls saved</span></div>
+          <div><b>98.9%</b><span>matched to the street</span></div>
+          <div><b>0</b><span>identifiers leaked</span></div>
         </div>
-        <div class="chips"><span class="chip">Python</span><span class="chip">AES-256-GCM</span><span class="chip">HMAC</span><span class="chip">Azure Key Vault</span><span class="chip">DuckDB</span><span class="chip">REST batch API</span></div>
+        <div class="role-tags"><span style="color:var(--r-se)">Software Engineer</span><span style="color:var(--r-de)">Data Engineer</span></div>
+        <div class="chips"><span class="chip">Python</span><span class="chip">AES-256-GCM</span><span class="chip">HMAC</span><span class="chip">Azure Key Vault</span><span class="chip">REST batch API</span><span class="chip">DuckDB</span></div>
         <div class="btns">
           <a class="btn primary small" href="https://mudunuru-vaibhavi.github.io/data-tokenization/" target="_blank" rel="noopener">Live dashboard ↗</a>
           <a class="btn small" href="https://github.com/mudunuru-vaibhavi/data-tokenization" target="_blank" rel="noopener">Code ↗</a>
           <a class="btn small" href="projects/data-tokenization/">Case study →</a>
         </div>
       </div>
-      <div class="shot" data-gallery="tok">
+      <div class="shot" data-gallery>
         <figure>
           <div class="chrome"><i></i><i></i><i></i><span>data-tokenization · dashboard</span></div>
-          <img src="assets/img/tok-overview.png" alt="Overview: three trust zones and one synthetic patient traced through each" width="1280" height="1300" loading="lazy">
+          <img src="assets/img/tok-overview.png" alt="Three trust zones and one synthetic patient traced through each" width="1280" height="1300" loading="lazy">
           <figcaption>Three trust zones, and one synthetic patient traced through each of them.</figcaption>
         </figure>
         <div class="shot-tabs" role="group" aria-label="Dashboard views">
-          <button type="button" aria-pressed="true" data-src="assets/img/tok-overview.png" data-alt="Overview of the three trust zones" data-cap="Three trust zones, and one synthetic patient traced through each of them.">Overview</button>
+          <button type="button" aria-pressed="true" data-src="assets/img/tok-overview.png" data-alt="Overview of the trust zones" data-cap="Three trust zones, and one synthetic patient traced through each of them.">Overview</button>
           <button type="button" aria-pressed="false" data-src="assets/img/tok-vault.png" data-alt="Service accounts, access attempts and audit logs" data-cap="Service-account roles, every forbidden attempt denied, and both audit logs.">Key vault</button>
-          <button type="button" aria-pressed="false" data-src="assets/img/tok-vendor.png" data-alt="What the vendor received: address columns only, zero identifiers" data-cap="The vendor's own request log: five columns per row and zero identifiers.">Vendor</button>
-          <button type="button" aria-pressed="false" data-src="assets/img/tok-map.png" data-alt="Patients per 5 km grid cell in one city, small cells suppressed" data-cap="Generalized geography: patients per 5 km cell, with small cells suppressed.">Map</button>
+          <button type="button" aria-pressed="false" data-src="assets/img/tok-vendor.png" data-alt="What the vendor received" data-cap="The vendor's own request log: five columns per row and zero identifiers.">Vendor</button>
+          <button type="button" aria-pressed="false" data-src="assets/img/tok-map.png" data-alt="Patients per 5 km cell in one city" data-cap="Generalized geography: patients per 5 km cell, with small cells suppressed.">Map</button>
+        </div>
+      </div>
+    </article>
+
+    <!-- 04 -->
+    <article class="project flip" id="p-hedis">
+      <div class="project-text">
+        <div class="project-num">04 <span class="tag">Quality measures · analytics</span></div>
+        <h3>HEDIS gap-closure outreach</h3>
+        <p class="problem"><b>The problem</b>A quality team has hundreds of open care gaps, limited outreach staff, and Star Rating money riding on which ones close first.</p>
+        <div class="label">Questions it answers</div>
+        <ul class="questions">
+          <li>Which members move the plan closest to its next Star?</li>
+          <li>How do we reach them, given transport, language and broadband barriers?</li>
+          <li>What do we say, with evidence, without exposing PHI in a text?</li>
+          <li>Which counties need focus first?</li>
+        </ul>
+        <div class="metrics four">
+          <div><b>5</b><span>HEDIS measures, two weighted 3×</span></div>
+          <div><b>3,144</b><span>counties ranked</span></div>
+          <div><b>9</b><span>studies behind the tactics</span></div>
+          <div><b>41</b><span>offline tests incl. safety</span></div>
+        </div>
+        <div class="role-tags"><span style="color:var(--r-da)">Data Analyst</span><span style="color:var(--r-bi)">BI Developer</span><span style="color:var(--r-se)">Software Engineer</span></div>
+        <div class="chips"><span class="chip">Python</span><span class="chip">SQLite</span><span class="chip">pandas</span><span class="chip">BM25 retrieval</span><span class="chip">CMS Star Ratings</span><span class="chip">CDC PLACES</span></div>
+        <div class="btns">
+          <a class="btn primary small" href="https://mudunuru-vaibhavi.github.io/hedis-outreach-rag/" target="_blank" rel="noopener">Live dashboard ↗</a>
+          <a class="btn small" href="https://github.com/mudunuru-vaibhavi/hedis-outreach-rag" target="_blank" rel="noopener">Code ↗</a>
+          <a class="btn small" href="projects/hedis-outreach-rag/">Case study →</a>
+        </div>
+      </div>
+      <div class="shot" data-gallery>
+        <figure>
+          <div class="chrome"><i></i><i></i><i></i><span>hedis-outreach-rag · dashboard</span></div>
+          <img src="assets/img/hedis-worklist.png" alt="Outreach worklist with a cited plan" width="1280" height="1100" loading="lazy">
+          <figcaption>Members ranked by Star impact, each with a cited plan and a draft pending approval.</figcaption>
+        </figure>
+        <div class="shot-tabs" role="group" aria-label="Dashboard views">
+          <button type="button" aria-pressed="true" data-src="assets/img/hedis-worklist.png" data-alt="Outreach worklist" data-cap="Members ranked by Star impact, each with a cited plan and a draft pending approval.">Worklist</button>
+          <button type="button" aria-pressed="false" data-src="assets/img/hedis-star-goals.png" data-alt="Star goals" data-cap="For any contract: rate, stars and members needed per 1,000 to reach the next cut point.">Star goals</button>
+          <button type="button" aria-pressed="false" data-src="assets/img/hedis-focus.png" data-alt="Where to focus" data-cap="Counties with the lowest screening rates and the biggest access barriers.">Where to focus</button>
         </div>
       </div>
     </article>
@@ -241,13 +279,13 @@
   <div class="wrap">
     <div class="section-head">
       <span class="eyebrow">How I work</span>
-      <h2>The habits that carry from one project to the next.</h2>
+      <h2>The habits behind every build.</h2>
     </div>
     <div class="practice">
-      <div><h3>Check before you load</h3><p>Manifests, checksums and contracts stop a bad file at the door. A night loads in full or not at all, so reports are never half-updated.</p><span class="where">Projects 01 · 03</span></div>
-      <div><h3>Prove it against a known answer</h3><p>Synthetic data with a planted effect lets me test the whole pipeline, not just its parts. If the answer is off, I find out why before trusting it.</p><span class="where">Project 03</span></div>
-      <div><h3>Automate the safe part, escalate the rest</h3><p>Re-pulling a damaged file is safe to automate. Changing a schema, a mapping or a message to a patient is a decision for a person.</p><span class="where">Projects 01 · 02 · 03</span></div>
-      <div><h3>Protect patient data by default</h3><p>Synthetic patients only, no PHI in texts, likely-PHI columns flagged under minimum necessary, and every source cited.</p><span class="where">All projects</span></div>
+      <div><h3>Check before you load</h3><p>Manifests, checksums and contracts stop a bad file at the door. A night loads in full or not at all.</p><span class="where">Clarity ETL · Rosetta</span></div>
+      <div><h3>Prove it against a known answer</h3><p>Synthetic data with a planted effect tests the whole pipeline, not just its parts. If a number is off, I find out why before trusting it.</p><span class="where">Rosetta</span></div>
+      <div><h3>Automate the safe part, escalate the rest</h3><p>Re-pulling a damaged file is safe to automate. Changing a schema, a mapping or a patient message is a decision for a person.</p><span class="where">All four projects</span></div>
+      <div><h3>Least privilege, logged</h3><p>Synthetic patients only, keys in a vault, accounts that can do exactly their job, and an audit trail for everything else.</p><span class="where">Data Tokenization · all</span></div>
     </div>
   </div>
 </section>
@@ -264,6 +302,7 @@
         <div>
           <h3>Data Analyst</h3>
           <p class="org">MY DR NOW · multi-clinic provider network</p>
+          <div class="role-tags"><span style="color:var(--r-de)">Data Engineer</span><span style="color:var(--r-se)">Software Engineer</span><span style="color:var(--r-bi)">BI Developer</span><span style="color:var(--r-da)">Data Analyst</span></div>
           <ul>
             <li>Built an ETL pipeline over 150+ Epic Clarity and 100+ Caboodle tables (8M+ rows a day) via SFTP into SQL Server, now the single source for company reporting at 99% on-time availability.</li>
             <li>Automated 18+ Python and SQL Server pipelines, cutting upkeep from about 40 hours a week to under 20 minutes.</li>
@@ -277,6 +316,7 @@
         <div>
           <h3>Research Data Analyst</h3>
           <p class="org">Northeastern University</p>
+          <div class="role-tags"><span style="color:var(--r-de)">Data Engineer</span><span style="color:var(--r-da)">Data Analyst</span><span style="color:var(--r-bi)">BI Developer</span></div>
           <ul>
             <li>Centralized 2M+ research records into a Snowflake warehouse with a searchable catalog used by 50+ studies.</li>
             <li>Automated survey, grant and lab data prep in Alteryx, saving 10+ hours a week.</li>
@@ -289,6 +329,7 @@
         <div>
           <h3>Health Data Analyst</h3>
           <p class="org">Malla Reddy Institute of Dental Sciences</p>
+          <div class="role-tags"><span style="color:var(--r-da)">Data Analyst</span><span style="color:var(--r-bi)">BI Developer</span></div>
           <ul>
             <li>Replaced manual reports with 20+ Excel dashboards (VBA, PivotTables) refreshed by Power Automate, cutting reporting time 35%.</li>
             <li>Raised service utilization about 18% across 4 dental departments using patient surveys and month-over-month trends.</li>
@@ -305,14 +346,14 @@
   <div class="wrap">
     <div class="section-head">
       <span class="eyebrow">Skills</span>
-      <h2>The toolkit.</h2>
+      <h2>The toolkit, by role.</h2>
     </div>
     <div class="skills">
+      <div><h3 style="color:var(--r-se)">Software engineering</h3><div class="chips"><span class="chip">Python</span><span class="chip">SQL</span><span class="chip">REST APIs</span><span class="chip">pytest</span><span class="chip">Docker</span><span class="chip">Git</span><span class="chip">GitHub Actions</span><span class="chip">AES-GCM / HMAC</span><span class="chip">Azure Key Vault</span></div></div>
+      <div><h3 style="color:var(--r-de)">Data engineering</h3><div class="chips"><span class="chip">PySpark</span><span class="chip">Airflow</span><span class="chip">SQL Server</span><span class="chip">Snowflake</span><span class="chip">DuckDB</span><span class="chip">SSIS</span><span class="chip">Alteryx</span><span class="chip">Informatica</span><span class="chip">SFTP</span><span class="chip">AWS (S3, Redshift)</span><span class="chip">Azure Synapse</span></div></div>
+      <div><h3 style="color:var(--r-da)">Data analysis</h3><div class="chips"><span class="chip">pandas</span><span class="chip">R</span><span class="chip">SAS</span><span class="chip">SPSS</span><span class="chip">Survival analysis</span><span class="chip">Propensity scores</span><span class="chip">Regression</span><span class="chip">Forecasting</span></div></div>
+      <div><h3 style="color:var(--r-bi)">BI and reporting</h3><div class="chips"><span class="chip">Power BI</span><span class="chip">DAX</span><span class="chip">Looker</span><span class="chip">Plotly</span><span class="chip">Excel (VBA)</span><span class="chip">Power Automate</span></div></div>
       <div><h3>Healthcare data</h3><div class="chips"><span class="chip">Epic Clarity</span><span class="chip">Caboodle</span><span class="chip">OMOP CDM</span><span class="chip">FHIR R4</span><span class="chip">HL7</span><span class="chip">ICD-10</span><span class="chip">SNOMED CT</span><span class="chip">LOINC</span><span class="chip">RxNorm</span><span class="chip">CPT</span><span class="chip">837 / 835</span><span class="chip">HEDIS</span><span class="chip">Star Ratings</span><span class="chip">HIPAA</span></div></div>
-      <div><h3>Languages</h3><div class="chips"><span class="chip">SQL (T-SQL, PL/SQL)</span><span class="chip">Python</span><span class="chip">R</span><span class="chip">DAX</span><span class="chip">SAS</span><span class="chip">SPSS</span></div></div>
-      <div><h3>Data engineering</h3><div class="chips"><span class="chip">PySpark</span><span class="chip">Airflow</span><span class="chip">SQL Server</span><span class="chip">Snowflake</span><span class="chip">DuckDB</span><span class="chip">SSIS</span><span class="chip">Alteryx</span><span class="chip">Informatica</span><span class="chip">SFTP</span></div></div>
-      <div><h3>Analytics and statistics</h3><div class="chips"><span class="chip">Power BI</span><span class="chip">Looker</span><span class="chip">Excel (VBA)</span><span class="chip">Survival analysis</span><span class="chip">Propensity scores</span><span class="chip">Regression</span><span class="chip">Forecasting</span></div></div>
-      <div><h3>Cloud and tooling</h3><div class="chips"><span class="chip">AWS (S3, Redshift)</span><span class="chip">Azure Synapse</span><span class="chip">Docker</span><span class="chip">Git</span><span class="chip">GitHub Actions</span><span class="chip">pytest</span><span class="chip">Power Automate</span></div></div>
     </div>
   </div>
 </section>
@@ -321,10 +362,10 @@
   <div class="wrap contact">
     <div>
       <span class="eyebrow">Contact</span>
-      <h2 style="margin-top:14px">Hiring for health data work? Let's talk.</h2>
+      <h2 style="margin-top:14px">Need someone who can own the whole path? Let's talk.</h2>
     </div>
     <div style="display:grid;gap:16px">
-      <p class="lede" style="font-size:17px">I'm open to data analyst, clinical informatics and data engineering roles in healthcare. Email is the fastest way to reach me.</p>
+      <p class="lede" style="font-size:17px">Open to software engineering, data engineering, data analyst and BI developer roles in healthcare. Email is the fastest way to reach me.</p>
       <span class="addr">l.vaibhavimudunuru@gmail.com</span>
       <div class="btns">
         <button class="btn primary" type="button" id="copy-email">Copy email</button>
@@ -341,7 +382,6 @@
 
 <script>
 (() => {
-  // ---- theme toggle (remembers the choice when storage is available)
   const root = document.documentElement;
   try { const t = localStorage.getItem("vm-theme"); if (t) root.dataset.theme = t; } catch (e) {}
   document.getElementById("theme").addEventListener("click", () => {
@@ -349,6 +389,36 @@
     root.dataset.theme = dark ? "light" : "dark";
     try { localStorage.setItem("vm-theme", root.dataset.theme); } catch (e) {}
   });
+
+  // ---- roles
+  const ROLES = {
+    se: { title: "I write code that other people can trust and rerun.", color: "--r-se",
+      what: "Packaged Python with tests, CLIs and CI; services with retries, auth and audit logs; encryption done properly. Every project here installs with one command and proves itself with its own test suite.",
+      proof: [["Data Tokenization", "HMAC tokens, AES-GCM vault, RBAC, REST client", "#p-tok"], ["Clarity ETL", "23 tests, Docker image, CI on SQL Server", "#p-clarity"],
+              ["At work", "Python PHI tokenization tool across 3 platforms", "#experience"]] },
+    de: { title: "I build pipelines that heal, and never half-load.", color: "--r-de",
+      what: "Epic Clarity and Caboodle extracts, FHIR exports, Spark, Airflow, SQL Server and Snowflake. Manifests and contracts at the door, all-or-nothing loads, quality checks before anything reaches a report.",
+      proof: [["Rosetta", "PySpark Clarity + FHIR → OMOP, Airflow DAG", "#p-rosetta"], ["Clarity ETL", "SFTP, ~80 checks a night, self-healing", "#p-clarity"],
+              ["At work", "250+ Clarity/Caboodle tables, 8M+ rows a day, 99% on time", "#experience"]] },
+    da: { title: "I answer the question, and show why the answer holds.", color: "--r-da",
+      what: "Cohort design, survival analysis, propensity scores, risk models, and plain-language findings. I check results against a known answer before I believe them.",
+      proof: [["Rosetta", "Glipizide vs metformin: Cox, IPTW, validated risk model", "#p-rosetta"], ["HEDIS outreach", "Star Rating gap math, county targeting", "#p-hedis"],
+              ["At work", "HEDIS analytics across 20+ measures, +65% compliance", "#experience"]] },
+    bi: { title: "I build dashboards that people actually act on.", color: "--r-bi",
+      what: "Power BI and DAX at work; static Plotly dashboards here that anyone can open. Each view answers a named question for a named audience: executives, finance, quality, IT.",
+      proof: [["Clarity ETL", "Executive, finance, data-quality and IT views", "#p-clarity"], ["HEDIS outreach", "Star goals, worklist and where-to-focus views", "#p-hedis"],
+              ["At work", "Minute-level wait times across 70+ clinics in Power BI", "#experience"]] },
+  };
+  const panel = document.getElementById("role-panel");
+  const showRole = (k) => {
+    const r = ROLES[k];
+    document.querySelectorAll(".role-tab").forEach((t) => t.setAttribute("aria-selected", t.dataset.role === k));
+    panel.style.setProperty("--rc", `var(${r.color})`);
+    panel.innerHTML = `<h3>${r.title}</h3><p class="what">${r.what}</p><div class="label">Proof</div><div class="proof">${
+      r.proof.map(([t, d, h]) => `<a href="${h}"><b>${t}</b><small>${d}</small></a>`).join("")}</div>`;
+  };
+  document.querySelectorAll(".role-tab").forEach((t) => t.addEventListener("click", () => showRole(t.dataset.role)));
+  showRole("se");
 
   // ---- screenshot galleries
   document.querySelectorAll("[data-gallery]").forEach((g) => {
@@ -367,7 +437,7 @@
     setTimeout(() => (copy.textContent = "Copy email"), 2200);
   });
 
-  // ---- project traces (real output lines from each project, shown statically; tabs switch between them)
+  // ---- project traces
   const T = {
     clarity: { note: "Cedar Valley Health · synthetic Epic Clarity", lines: [
       ["t", "02:16  run 133  "], ["ok", "✔ Nov 10 loaded · 80 checks ok"], null,
@@ -385,15 +455,22 @@
       ["t", "LOINC    59261-8 "], ["", "62 mmol/mol    "], ["ok", "→ 7.8 % NGSP"], null,
       ["t", "local    EGFR21  "], ["warn", "suggested 62238-1 "], ["ok", "→ reviewer: 98979-8"], null,
       ["t", "dq       163 checks "], ["ok", "157 pass · 0 fatal · 11 flagged"], null,
-      ["t", "study    HR "], ["ok", "2.28 (1.86–2.79)"], ["", "  oracle 2.19 · true 2.0"], null ] },
+      ["t", "study    HR "], ["ok", "2.28 (1.86–2.79)"], ["", "  truth 2.19"], null ] },
     hedis: { note: "CMS 2027 Star Ratings · synthetic members", lines: [
       ["t", "contract H0028 · "], ["", "CBP 87% ★★★★  "], ["warn", "3.0 pts to 5★ (×3 weight)"], null,
       ["t", " 1  SYN-0140  "], ["", "BCS COL EED GSD CBP  "], ["key", "phone"], ["ok", "  4.37"], null,
       ["t", " 2  SYN-0125  "], ["", "BCS COL EED CBP      "], ["key", "phone"], ["ok", "  3.77"], null,
       ["t", " 3  SYN-0003  "], ["", "COL EED CBP          "], ["key", "sms  "], ["ok", "  3.23"], null,
       ["t", "plan "], ["", "BCS → phone reminder that books the visit"], null,
-      ["t", "cite "], ["", "Ferrari 2025; Mosquera 2023"], null,
       ["t", "sms  "], ["ok", "no condition named · STOP opt-out · pending approval"], null ] },
+    tok: { note: "700,000 synthetic patients · local key vault", lines: [
+      ["t", "tokenize   "], ["", "9 fields → "], ["ok", "1,895,833 values vaulted"], null,
+      ["t", "dedupe     "], ["", "700,000 patients → "], ["ok", "411,820 addresses"], null,
+      ["t", "geocoder   "], ["key", "detokenize street,city,zip · batch 1/412"], null,
+      ["t", "vendor     "], ["warn", "503 · retry in 50 ms"], ["ok", " → 200"], null,
+      ["t", "geocoder   "], ["key", "detokenize ssn "], ["warn", "→ DENIED (audited)"], null,
+      ["t", "rotate     "], ["", "data-encryption-key v1 → v2 · "], ["ok", "tokens unchanged"], null,
+      ["t", "leak scan  "], ["ok", "lake 0 · vendor log 0 · published 0"], null ] },
   };
   const body = document.getElementById("trace"), note = document.getElementById("trace-note");
   const render = (k) => {
