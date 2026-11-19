@@ -1,0 +1,368 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Vaibhavi Mudunuru · Health Data</title>
+<meta name="description" content="Health data analyst and clinical data engineer. Epic Clarity pipelines, OMOP and FHIR, data quality, HEDIS and real-world evidence. Three end-to-end projects with live dashboards.">
+<meta property="og:title" content="Vaibhavi Mudunuru · Health Data">
+<meta property="og:description" content="Epic Clarity pipelines, OMOP and FHIR, data quality, HEDIS and real-world evidence: three end-to-end projects with live dashboards.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%232346c8'/%3E%3Ctext x='16' y='21.5' font-family='Arial' font-weight='700' font-size='14' fill='white' text-anchor='middle'%3EVM%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body id="top">
+<a class="skip" href="#projects">Skip to projects</a>
+
+<nav class="nav" aria-label="Main">
+  <div class="wrap">
+    <a class="brand" href="#top"><span class="mark">VM</span>Vaibhavi Mudunuru</a>
+    <ul>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#practice">How I work</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <button class="theme-btn" id="theme" type="button" aria-label="Switch light or dark theme">◐ Theme</button>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div>
+      <span class="eyebrow">Health data analyst · clinical data engineering</span>
+      <h1>I turn messy healthcare data into <em>decisions people trust.</em></h1>
+      <p class="lede">Six years across clinics, a university research office and dental departments: Epic Clarity pipelines, quality measures, dashboards and automation, with patient data protected the whole way. Below are three systems I built end to end, each with a live dashboard and its code.</p>
+      <div class="btns">
+        <a class="btn primary" href="#projects">See the projects ↓</a>
+        <a class="btn" href="https://github.com/mudunuru-vaibhavi" target="_blank" rel="noopener">GitHub ↗</a>
+        <a class="btn" href="#contact">Contact</a>
+      </div>
+    </div>
+
+    <div class="term" aria-label="Sample output from the three projects">
+      <div class="term-bar" role="tablist">
+        <button class="term-tab" role="tab" aria-selected="true" data-trace="clarity" id="tab-clarity">clarity-etl · nightly</button>
+        <button class="term-tab" role="tab" aria-selected="false" data-trace="omop" id="tab-omop">omop-etl · mapping</button>
+        <button class="term-tab" role="tab" aria-selected="false" data-trace="hedis" id="tab-hedis">outreach · worklist</button>
+      </div>
+      <div class="term-body" id="trace" role="tabpanel" aria-live="polite"></div>
+      <div class="term-foot"><span id="trace-note">Cedar Valley Health · synthetic data</span><span>output from the projects below</span></div>
+    </div>
+  </div>
+</header>
+
+<div class="stats" aria-label="Career highlights">
+  <div class="wrap">
+    <div class="stat"><b>6+ yrs</b><span>in healthcare data, from dental clinics to a multi-clinic network</span></div>
+    <div class="stat"><b>250+</b><span>Epic Clarity and Caboodle tables feeding production ETL</span></div>
+    <div class="stat"><b>70+</b><span>clinic locations with minute-level patient-flow reporting</span></div>
+    <div class="stat"><b>20+</b><span>HEDIS and Star Ratings quality measures tracked</span></div>
+  </div>
+</div>
+
+<section class="band" id="projects">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Projects</span>
+      <h2>Three systems, built end to end and tested like production.</h2>
+      <p class="lede">Each one starts from raw source data and ends in a dashboard someone could act on. All patient data is synthetic; codes and public datasets are real.</p>
+    </div>
+
+    <!-- 01 -->
+    <article class="project">
+      <div class="project-text">
+        <div class="project-num">01 <span class="tag">Data engineering</span></div>
+        <h3>Self-healing Epic Clarity ETL</h3>
+        <p class="summary">Nightly Clarity extracts move over SFTP into a SQL warehouse. Every file and row is checked before it lands, and an investigation agent diagnoses failures: it fixes what is safe to fix and asks a person before anything else.</p>
+        <ul class="facts">
+          <li>140 nights of simulated Clarity data across 16 tables: visits, charges, payments and denials</li>
+          <li>About 80 checks a night; each night loads all or nothing, with a full audit trail</li>
+          <li>A truncated transfer heals itself in 4 minutes; a new column that looks like PHI is held for approval</li>
+          <li>CI loads real SQL Server and SFTP containers on every push</li>
+        </ul>
+        <div class="metrics">
+          <div><b>~80</b><span>checks per night</span></div>
+          <div><b>1 of 2</b><span>failures healed with no human</span></div>
+          <div><b>4</b><span>audiences: exec, finance, data, IT</span></div>
+        </div>
+        <div class="chips"><span class="chip">Python</span><span class="chip">SQL Server</span><span class="chip">SQLAlchemy</span><span class="chip">pandas</span><span class="chip">SFTP</span><span class="chip">Plotly</span><span class="chip">Docker</span><span class="chip">GitHub Actions</span></div>
+        <div class="btns">
+          <a class="btn primary small" href="https://mudunuru-vaibhavi.github.io/clarity-agentic-etl/" target="_blank" rel="noopener">Live dashboard ↗</a>
+          <a class="btn small" href="https://github.com/mudunuru-vaibhavi/clarity-agentic-etl" target="_blank" rel="noopener">Code ↗</a>
+          <a class="btn small" href="projects/clarity-agentic-etl/">Case study →</a>
+        </div>
+      </div>
+      <div class="shot" data-gallery="clarity">
+        <figure>
+          <div class="chrome"><i></i><i></i><i></i><span>clarity-agentic-etl · dashboard</span></div>
+          <img src="assets/img/clarity-executive.png" alt="Executive view: visits, no-show rate, ED visits and a daily visits chart" width="1440" height="900" loading="lazy">
+          <figcaption>Visits, no-shows, ED volume and department load, compared with the prior period.</figcaption>
+        </figure>
+        <div class="shot-tabs" role="group" aria-label="Dashboard views">
+          <button type="button" aria-pressed="true" data-src="assets/img/clarity-executive.png" data-alt="Executive view: visits, no-show rate, ED visits and a daily visits chart" data-cap="Visits, no-shows, ED volume and department load, compared with the prior period.">Executive</button>
+          <button type="button" aria-pressed="false" data-src="assets/img/clarity-finance.png" data-alt="Finance view: A/R aging by payer class, charges versus payments, denial reasons" data-cap="A/R aging by payer class, collections against charges, payer denial rates and reasons.">Finance</button>
+          <button type="button" aria-pressed="false" data-src="assets/img/clarity-data-quality.png" data-alt="Data quality view: check results over time and table freshness" data-cap="Nightly check results, table freshness and blank-value trends.">Data quality</button>
+          <button type="button" aria-pressed="false" data-src="assets/img/clarity-it.png" data-alt="IT view: nightly runs with two failures and the agent's incident reports" data-cap="Every nightly run, each failure the agent investigated, and what it did.">IT</button>
+        </div>
+      </div>
+    </article>
+
+    <!-- 02 -->
+    <article class="project flip">
+      <div class="project-text">
+        <div class="project-num">02 <span class="tag">Quality measures</span></div>
+        <h3>HEDIS gap-closure outreach</h3>
+        <p class="summary">For a Medicare Advantage plan, it ranks which members to reach first for the most Star Rating credit, picks how to reach them, and drafts a message grounded in cited public evidence, held for human approval.</p>
+        <ul class="facts">
+          <li>Real public data: CMS 2027 Star Ratings and cut points, CDC PLACES, CDC/ATSDR SVI, USPSTF and NIH</li>
+          <li>Priority = Star weight × distance to the next cut point, with the 3× weighted measures doing the heavy lifting</li>
+          <li>Retrieval over a cited knowledge base (BM25, optional hybrid vectors); no citation, no message</li>
+          <li>Guardrails tested: no PHI in texts, opt-out language, injected web text treated as data</li>
+        </ul>
+        <div class="metrics">
+          <div><b>5</b><span>HEDIS measures, CMS-weighted</span></div>
+          <div><b>3,000+</b><span>counties ranked for focus</span></div>
+          <div><b>41</b><span>offline tests incl. safety</span></div>
+        </div>
+        <div class="chips"><span class="chip">Python</span><span class="chip">SQLite</span><span class="chip">pandas</span><span class="chip">BM25</span><span class="chip">ChromaDB</span><span class="chip">CMS Star Ratings</span><span class="chip">CDC PLACES</span></div>
+        <div class="btns">
+          <a class="btn primary small" href="https://mudunuru-vaibhavi.github.io/hedis-outreach-rag/" target="_blank" rel="noopener">Live dashboard ↗</a>
+          <a class="btn small" href="https://github.com/mudunuru-vaibhavi/hedis-outreach-rag" target="_blank" rel="noopener">Code ↗</a>
+          <a class="btn small" href="projects/hedis-outreach-rag/">Case study →</a>
+        </div>
+      </div>
+      <div class="shot" data-gallery="hedis">
+        <figure>
+          <div class="chrome"><i></i><i></i><i></i><span>hedis-outreach-rag · dashboard</span></div>
+          <img src="assets/img/hedis-worklist.png" alt="Outreach worklist: synthetic patients ranked by priority with a cited outreach plan" width="1280" height="1100" loading="lazy">
+          <figcaption>Members ranked by Star impact, each with a cited plan and a draft pending approval.</figcaption>
+        </figure>
+        <div class="shot-tabs" role="group" aria-label="Dashboard views">
+          <button type="button" aria-pressed="true" data-src="assets/img/hedis-worklist.png" data-alt="Outreach worklist with a cited outreach plan" data-cap="Members ranked by Star impact, each with a cited plan and a draft pending approval.">Worklist</button>
+          <button type="button" aria-pressed="false" data-src="assets/img/hedis-star-goals.png" data-alt="Star goals: five measures with rates, stars and distance to the next cut point" data-cap="For any contract: rate, stars and members needed per 1,000 to reach the next cut point.">Star goals</button>
+          <button type="button" aria-pressed="false" data-src="assets/img/hedis-focus.png" data-alt="Where to focus: counties with low screening rates and access barriers" data-cap="Counties with the lowest screening rates and the biggest access barriers.">Where to focus</button>
+        </div>
+      </div>
+    </article>
+
+    <!-- 03 -->
+    <article class="project">
+      <div class="project-text">
+        <div class="project-num">03 <span class="tag">Clinical informatics · RWE</span></div>
+        <h3>OMOP multi-site ETL and RWE study</h3>
+        <p class="summary">Two health systems, two formats: an Epic Clarity extract and a FHIR R4 bulk export. A PySpark ETL maps both into one OMOP CDM v5.4 warehouse, 163 OHDSI-style checks test it, and a new-user cohort study runs on top, with a known right answer to check against.</p>
+        <ul class="facts">
+          <li>ICD-10-CM, SNOMED, LOINC, RxNorm and CPT mapped through <code>Maps to</code>, routed by domain, with units harmonised (ounces, pounds, IFCC HbA1c)</li>
+          <li>Local codes mapped through a reviewed <code>SOURCE_TO_CONCEPT_MAP</code>: 4 of 6 automatic suggestions corrected</li>
+          <li>Kaplan–Meier, Cox and IPTW recover a planted effect: HR 2.28 vs an oracle of 2.19</li>
+          <li>Orchestrated with Airflow 3; files land in S3 with checksum manifests</li>
+        </ul>
+        <div class="metrics">
+          <div><b>100%</b><span>of 886,847 records mapped</span></div>
+          <div><b>157/157</b><span>quality checks pass</span></div>
+          <div><b>0.70</b><span>risk-model AUC at the other site</span></div>
+        </div>
+        <div class="chips"><span class="chip">PySpark</span><span class="chip">OMOP CDM</span><span class="chip">FHIR R4</span><span class="chip">DuckDB</span><span class="chip">Airflow</span><span class="chip">AWS S3</span><span class="chip">lifelines</span><span class="chip">scikit-learn</span></div>
+        <div class="btns">
+          <a class="btn primary small" href="https://mudunuru-vaibhavi.github.io/omop-multisite-etl/" target="_blank" rel="noopener">Live dashboard ↗</a>
+          <a class="btn small" href="https://github.com/mudunuru-vaibhavi/omop-multisite-etl" target="_blank" rel="noopener">Code ↗</a>
+          <a class="btn small" href="projects/omop-multisite-etl/">Case study →</a>
+        </div>
+      </div>
+      <div class="shot" data-gallery="omop">
+        <figure>
+          <div class="chrome"><i></i><i></i><i></i><span>omop-multisite-etl · dashboard</span></div>
+          <img src="assets/img/omop-study.png" alt="Study view: cumulative incidence curves, hazard ratio forest plot, covariate balance and calibration" width="1280" height="1400" loading="lazy">
+          <figcaption>Glipizide vs metformin: Kaplan–Meier curves, hazard ratios against the true value, balance and calibration.</figcaption>
+        </figure>
+        <div class="shot-tabs" role="group" aria-label="Dashboard views">
+          <button type="button" aria-pressed="true" data-src="assets/img/omop-study.png" data-alt="Study view with Kaplan-Meier curves and a hazard ratio forest plot" data-cap="Glipizide vs metformin: Kaplan–Meier curves, hazard ratios against the true value, balance and calibration.">RWE study</button>
+          <button type="button" aria-pressed="false" data-src="assets/img/omop-mapping.png" data-alt="Vocabulary mapping: coverage by site and the reviewed local mappings" data-cap="Mapping coverage by site, and every local-code decision with its automated checks.">Mapping</button>
+          <button type="button" aria-pressed="false" data-src="assets/img/omop-dq.png" data-alt="Data quality: 163 checks by Kahn category" data-cap="163 checks by Kahn category; every planted defect is flagged.">Data quality</button>
+          <button type="button" aria-pressed="false" data-src="assets/img/omop-sites.png" data-alt="Sites compared: age, visits, conditions and harmonised body weight" data-cap="Two sites after harmonisation: ounces, pounds and kilograms land on the same median.">Sites</button>
+        </div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section class="band alt" id="practice">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">How I work</span>
+      <h2>The habits that carry from one project to the next.</h2>
+    </div>
+    <div class="practice">
+      <div><h3>Check before you load</h3><p>Manifests, checksums and contracts stop a bad file at the door. A night loads in full or not at all, so reports are never half-updated.</p><span class="where">Projects 01 · 03</span></div>
+      <div><h3>Prove it against a known answer</h3><p>Synthetic data with a planted effect lets me test the whole pipeline, not just its parts. If the answer is off, I find out why before trusting it.</p><span class="where">Project 03</span></div>
+      <div><h3>Automate the safe part, escalate the rest</h3><p>Re-pulling a damaged file is safe to automate. Changing a schema, a mapping or a message to a patient is a decision for a person.</p><span class="where">Projects 01 · 02 · 03</span></div>
+      <div><h3>Protect patient data by default</h3><p>Synthetic patients only, no PHI in texts, likely-PHI columns flagged under minimum necessary, and every source cited.</p><span class="where">All projects</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="experience">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Experience · Aug 2020 – present</span>
+      <h2>Six years across three corners of healthcare.</h2>
+    </div>
+    <div class="timeline">
+      <div class="job">
+        <div class="when">Oct 2025 – Present<br>Phoenix, AZ</div>
+        <div>
+          <h3>Data Analyst</h3>
+          <p class="org">MY DR NOW · multi-clinic provider network</p>
+          <ul>
+            <li>Built an ETL pipeline over 150+ Epic Clarity and 100+ Caboodle tables (8M+ rows a day) via SFTP into SQL Server, now the single source for company reporting at 99% on-time availability.</li>
+            <li>Automated 18+ Python and SQL Server pipelines, cutting upkeep from about 40 hours a week to under 20 minutes.</li>
+            <li>Led a payer care-gap application feeding a CRM with patient-level gap tracking, and HEDIS / Star Ratings analytics across 20+ measures that lifted compliance 65% in Q4.</li>
+            <li>Tracked minute-level wait times across 70+ clinics in Power BI, and secured PHI with a Python tokenization tool across 3 platforms.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="job">
+        <div class="when">Nov 2023 – Mar 2025<br>Boston, MA</div>
+        <div>
+          <h3>Research Data Analyst</h3>
+          <p class="org">Northeastern University</p>
+          <ul>
+            <li>Centralized 2M+ research records into a Snowflake warehouse with a searchable catalog used by 50+ studies.</li>
+            <li>Automated survey, grant and lab data prep in Alteryx, saving 10+ hours a week.</li>
+            <li>Launched self-service Looker and Power BI dashboards that cut ad-hoc data requests by about 30%.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="job">
+        <div class="when">Aug 2020 – Aug 2023<br>India</div>
+        <div>
+          <h3>Health Data Analyst</h3>
+          <p class="org">Malla Reddy Institute of Dental Sciences</p>
+          <ul>
+            <li>Replaced manual reports with 20+ Excel dashboards (VBA, PivotTables) refreshed by Power Automate, cutting reporting time 35%.</li>
+            <li>Raised service utilization about 18% across 4 dental departments using patient surveys and month-over-month trends.</li>
+            <li>Profiled oral-health and social-determinants patterns across 50K+ patient records to target community outreach.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="edu"><b>MS, Health Informatics</b><span class="muted">Northeastern University · 2025</span></div>
+  </div>
+</section>
+
+<section class="band alt" id="skills">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Skills</span>
+      <h2>The toolkit.</h2>
+    </div>
+    <div class="skills">
+      <div><h3>Healthcare data</h3><div class="chips"><span class="chip">Epic Clarity</span><span class="chip">Caboodle</span><span class="chip">OMOP CDM</span><span class="chip">FHIR R4</span><span class="chip">HL7</span><span class="chip">ICD-10</span><span class="chip">SNOMED CT</span><span class="chip">LOINC</span><span class="chip">RxNorm</span><span class="chip">CPT</span><span class="chip">837 / 835</span><span class="chip">HEDIS</span><span class="chip">Star Ratings</span><span class="chip">HIPAA</span></div></div>
+      <div><h3>Languages</h3><div class="chips"><span class="chip">SQL (T-SQL, PL/SQL)</span><span class="chip">Python</span><span class="chip">R</span><span class="chip">DAX</span><span class="chip">SAS</span><span class="chip">SPSS</span></div></div>
+      <div><h3>Data engineering</h3><div class="chips"><span class="chip">PySpark</span><span class="chip">Airflow</span><span class="chip">SQL Server</span><span class="chip">Snowflake</span><span class="chip">DuckDB</span><span class="chip">SSIS</span><span class="chip">Alteryx</span><span class="chip">Informatica</span><span class="chip">SFTP</span></div></div>
+      <div><h3>Analytics and statistics</h3><div class="chips"><span class="chip">Power BI</span><span class="chip">Looker</span><span class="chip">Excel (VBA)</span><span class="chip">Survival analysis</span><span class="chip">Propensity scores</span><span class="chip">Regression</span><span class="chip">Forecasting</span></div></div>
+      <div><h3>Cloud and tooling</h3><div class="chips"><span class="chip">AWS (S3, Redshift)</span><span class="chip">Azure Synapse</span><span class="chip">Docker</span><span class="chip">Git</span><span class="chip">GitHub Actions</span><span class="chip">pytest</span><span class="chip">Power Automate</span></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="contact">
+  <div class="wrap contact">
+    <div>
+      <span class="eyebrow">Contact</span>
+      <h2 style="margin-top:14px">Hiring for health data work? Let's talk.</h2>
+    </div>
+    <div style="display:grid;gap:16px">
+      <p class="lede" style="font-size:17px">I'm open to data analyst, clinical informatics and data engineering roles in healthcare. Email is the fastest way to reach me.</p>
+      <span class="addr">l.vaibhavimudunuru@gmail.com</span>
+      <div class="btns">
+        <button class="btn primary" type="button" id="copy-email">Copy email</button>
+        <a class="btn" href="mailto:l.vaibhavimudunuru@gmail.com">Email me</a>
+        <a class="btn" href="https://github.com/mudunuru-vaibhavi" target="_blank" rel="noopener">GitHub ↗</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="site">
+  <div class="wrap"><span>© 2026 Vaibhavi Mudunuru</span><span>Project data is synthetic. No real patient information is used.</span></div>
+</footer>
+
+<script>
+(() => {
+  // ---- theme toggle (remembers the choice when storage is available)
+  const root = document.documentElement;
+  try { const t = localStorage.getItem("vm-theme"); if (t) root.dataset.theme = t; } catch (e) {}
+  document.getElementById("theme").addEventListener("click", () => {
+    const dark = root.dataset.theme ? root.dataset.theme === "dark" : matchMedia("(prefers-color-scheme: dark)").matches;
+    root.dataset.theme = dark ? "light" : "dark";
+    try { localStorage.setItem("vm-theme", root.dataset.theme); } catch (e) {}
+  });
+
+  // ---- screenshot galleries
+  document.querySelectorAll("[data-gallery]").forEach((g) => {
+    const img = g.querySelector("img"), cap = g.querySelector("figcaption");
+    g.querySelectorAll(".shot-tabs button").forEach((b) => b.addEventListener("click", () => {
+      g.querySelectorAll(".shot-tabs button").forEach((x) => x.setAttribute("aria-pressed", x === b));
+      img.src = b.dataset.src; img.alt = b.dataset.alt; cap.textContent = b.dataset.cap;
+    }));
+  });
+
+  // ---- copy email
+  const copy = document.getElementById("copy-email");
+  copy.addEventListener("click", async () => {
+    try { await navigator.clipboard.writeText("l.vaibhavimudunuru@gmail.com"); copy.textContent = "Copied"; }
+    catch (e) { const r = document.createRange(); r.selectNodeContents(document.querySelector(".addr")); getSelection().removeAllRanges(); getSelection().addRange(r); copy.textContent = "Selected: press ⌘C"; }
+    setTimeout(() => (copy.textContent = "Copy email"), 2200);
+  });
+
+  // ---- project traces (real output lines from each project, shown statically; tabs switch between them)
+  const T = {
+    clarity: { note: "Cedar Valley Health · synthetic Epic Clarity", lines: [
+      ["t", "02:16  run 133  "], ["ok", "✔ Nov 10 loaded · 80 checks ok"], null,
+      ["t", "02:04  run 134  "], ["warn", "✖ Nov 11 checksum failed: HSP_TRANSACTIONS"], null,
+      ["t", "02:04  agent    "], ["", "landed file ≠ manifest; source copy intact"], null,
+      ["t", "02:05  agent    "], ["key", "re-pull over SFTP → retry load"], null,
+      ["t", "02:08  run 135  "], ["ok", "✔ Nov 11 loaded · healed, no human needed"], null,
+      ["t", "02:04  run 138  "], ["warn", "✖ Nov 14 schema drift: PATIENT +PAT_EMAIL"], null,
+      ["t", "02:05  agent    "], ["", "new column looks like PHI (minimum necessary)"], null,
+      ["t", "02:05  agent    "], ["key", "later nights held · approval requested"], null ] },
+    omop: { note: "Clarity + FHIR R4 → OMOP CDM v5.4 · synthetic", lines: [
+      ["t", "ICD10CM  E11.649 "], ["key", "→ SNOMED 44054006 "], ["", "+ 302866003"], null,
+      ["t", "ICD10CM  Z87.891 "], ["key", "→ SNOMED 8517006  "], ["", "routed to OBSERVATION"], null,
+      ["t", "LOINC    29463-7 "], ["", "2857.2 [oz_av] "], ["ok", "→ 81.0 kg"], null,
+      ["t", "LOINC    59261-8 "], ["", "62 mmol/mol    "], ["ok", "→ 7.8 % NGSP"], null,
+      ["t", "local    EGFR21  "], ["warn", "suggested 62238-1 "], ["ok", "→ reviewer: 98979-8"], null,
+      ["t", "dq       163 checks "], ["ok", "157 pass · 0 fatal · 11 flagged"], null,
+      ["t", "study    HR "], ["ok", "2.28 (1.86–2.79)"], ["", "  oracle 2.19 · true 2.0"], null ] },
+    hedis: { note: "CMS 2027 Star Ratings · synthetic members", lines: [
+      ["t", "contract H0028 · "], ["", "CBP 87% ★★★★  "], ["warn", "3.0 pts to 5★ (×3 weight)"], null,
+      ["t", " 1  SYN-0140  "], ["", "BCS COL EED GSD CBP  "], ["key", "phone"], ["ok", "  4.37"], null,
+      ["t", " 2  SYN-0125  "], ["", "BCS COL EED CBP      "], ["key", "phone"], ["ok", "  3.77"], null,
+      ["t", " 3  SYN-0003  "], ["", "COL EED CBP          "], ["key", "sms  "], ["ok", "  3.23"], null,
+      ["t", "plan "], ["", "BCS → phone reminder that books the visit"], null,
+      ["t", "cite "], ["", "Ferrari 2025; Mosquera 2023"], null,
+      ["t", "sms  "], ["ok", "no condition named · STOP opt-out · pending approval"], null ] },
+  };
+  const body = document.getElementById("trace"), note = document.getElementById("trace-note");
+  const render = (k) => {
+    body.innerHTML = ""; let p = document.createElement("p"); let i = 0;
+    T[k].lines.forEach((seg) => {
+      if (seg === null) { p.style.animationDelay = `${i++ * 70}ms`; body.appendChild(p); p = document.createElement("p"); return; }
+      const s = document.createElement("span"); if (seg[0]) s.className = seg[0]; s.textContent = seg[1]; p.appendChild(s);
+    });
+    note.textContent = T[k].note;
+  };
+  document.querySelectorAll(".term-tab").forEach((b) => b.addEventListener("click", () => {
+    document.querySelectorAll(".term-tab").forEach((x) => x.setAttribute("aria-selected", x === b));
+    render(b.dataset.trace);
+  }));
+  render("clarity");
+})();
+</script>
+</body>
+</html>
